@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/15 15:01:33 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/15 19:34:41 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <stdbool.h>
 
 typedef struct s_map
 {
@@ -37,6 +38,5 @@ typedef struct s_program
 	struct t_map		*map;
 
 }	t_program;
-
 
 #endif

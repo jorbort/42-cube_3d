@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/18 19:02:17 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/18 20:31:32 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdbool.h>
+
+# define LEFT 123
+# define RIGHT 124
+# define DOWN 125
+# define UP 126
+# define ESC 53
 
 typedef struct s_map
 {
@@ -52,5 +58,9 @@ bool	check_map(t_program *game);
 void	parse_map(t_map *map, char *path);
 //epurstr
 char	*ft_epurstr(char *str);
+//keymaping.c
+int		deal_key(int key, t_program *game);
+//main.c
+int	end_game(t_program *game);
 
 #endif

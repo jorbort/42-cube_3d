@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:08:25 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/18 18:40:18 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:40:09 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ void	parse_map(t_map *map, char *path)
 
 	i = -1;
 	get_map(map, path);
-	while (map->map[++i])
+	while (++i < 6)
 		map->map[i] = ft_epurstr(map->map[i]);
 }

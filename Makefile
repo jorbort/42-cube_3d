@@ -1,6 +1,6 @@
 NAME=cub3D
-FLAGS= -Wall -Werror -Wextra -g
-SRC= main.c
+FLAGS= -Wall -Werror -Wextra -g -fsanitize=address
+SRC= main.c inits.c map.c ft_epurstr.c
 CC = gcc
 MLX_PATH = mlx/
 MLX_LIB = $(MLX_PATH)libmlx.a
@@ -13,14 +13,14 @@ HEADER = cub3D.h
 all:  subsystems $(NAME)
 
 %.o: %.c	$(HEADER)
-	$(CC) $(CFLAGS) -Imlx -c -o  $@ $<
+	$(CC) $(FLAGS) -Imlx -c -o  $@ $<
 
 subsystems:
 	make -C $(MLX_PATH) all
 	make -C $(LIBFT_PATH) all
 
 $(NAME): $(OBJECTS)
-	$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJECTS) $(MLX_LIB) $(LIBFT_LIB) -o $(NAME) 
+	$(CC) $(FLAGS) $(MLX_FLAGS) $(OBJECTS) $(MLX_LIB) $(LIBFT_LIB) -o $(NAME) 
 
 clean : 
 	make -C $(MLX_PATH) clean

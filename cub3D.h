@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/15 19:34:41 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:02:17 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,27 @@ typedef struct s_map
 typedef struct s_data
 {
 	char	*map_path;
+	void	*mlx;
+	void	*window;
 }	t_data;
 
 typedef struct s_program
 {
-	struct t_program	*data;
-	struct t_map		*map;
+	t_data		*data;
+	t_map		*map;
 
 }	t_program;
+
+//inits.c//
+void	init_structs(t_program *game);
+
+//map.c
+void	get_map(t_map *map, char *path);
+void	ft_map_error(int num_error);
+bool	check_map_ext(char *path, char *ext);
+bool	check_map(t_program *game);
+void	parse_map(t_map *map, char *path);
+//epurstr
+char	*ft_epurstr(char *str);
 
 #endif

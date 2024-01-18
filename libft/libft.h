@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 17:17:36 by jbortolo          #+#    #+#             */
-/*   Updated: 2023/06/14 14:46:03 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:02:02 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,7 @@ int		ft_printf(char const *c, ...);
 int		print_pointer_hex(unsigned long parameters);
 int		ft_putchar_par(char c);
 int		ft_putnbr_base(int nbr, const char *j);
+
+
 
 #endif

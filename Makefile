@@ -27,6 +27,10 @@ clean :
 	make -C $(LIBFT_PATH) clean
 	rm -f *.o
 
+git :
+	git add *
+	git commit -m "auto commit"
+	git push
 
 
 fclean : clean
@@ -36,4 +40,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all re clean fclean
+.PHONY : all re clean fclean git

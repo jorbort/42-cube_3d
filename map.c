@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:08:25 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/19 18:53:54 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/19 19:17:23 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 bool	check_map(t_program *game)
 {
-	count_assets(game);
 	if (!check_walls(game->map))
 		ft_map_error(4);
 	if (!check_assets(game))

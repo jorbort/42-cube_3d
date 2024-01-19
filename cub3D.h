@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/19 19:09:10 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/19 20:22:35 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	parse_map(t_map *map, char *path, t_program *game);
 //map_utils.c
 void	get_rgb(t_map *map, t_data *data);
 void	trim_file(t_map *map);
+int		ft_arrlen(char **s);
 //epurstr
 char	*ft_epurstr(char *str);
 //keymaping.c
@@ -90,7 +91,7 @@ int		end_game(t_program *game);
 void	free_double_arr(char **arr);
 //textures_handling.c
 void	get_textures(t_map *map, t_data *data);
-//map_error
+//map_error.c
 void	ft_map_error(int num_error);
 void	print_error(char *str);
 

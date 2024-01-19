@@ -6,19 +6,55 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:41:15 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/19 13:40:31 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:13:26 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	ft_atrgb(char *s)
+int	ft_arrlen(char **s)
 {
 	int	i;
-	int	ret;
-	int	flag;
 
-	(1 && (i = 0) && (ret = 0) && (flag = 1));
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+void	trim_file(t_map *map)
+{
+	char	**tmp;
+	int		i;
+	int		j;
+
+	i = 6;
+	j = 0;
+	tmp = malloc(sizeof(char **) * ft_arrlen(map->map) - 5);
+	if (!tmp)
+		ft_map_error(4);
+	while (map->map[i])
+	{
+		tmp[j] = ft_strdup(map->map[i]);
+		j++;
+		i++;
+	}
+	tmp[j] = NULL;
+	free_double_arr(map->map);
+	map->map = tmp;
+	i = 0;
+	while (map->map[i])
+		printf("%s\n", map->map[i++]);
+}
+
+int	ft_atrgb(char *s)
+{
+	int			i;
+	int			ret;
+	static int	flag = 1;
+
+	i = 0;
+	ret = 0;
 	while (s[i] == ' ' || s[i] == '\t')
 		i++;
 	while (s[i])
@@ -33,8 +69,8 @@ int	ft_atrgb(char *s)
 		}
 		if (!ft_isdigit(s[i]))
 			flag = -1;
-		if (s[i] >= '\0' && s[i] <= '\9')
-			ret = ret * 10 + s[i] - '\0';
+		if (s[i] >= '0' && s[i] <= '9')
+			ret = (ret * 10) + (s[i] - '0');
 		i++;
 	}
 	return (ret * flag);
@@ -58,6 +94,7 @@ void	atoi_rgb(int *rgb, char **str)
 			free_double_arr(str);
 			ft_map_error(3);
 		}
+		i++;
 	}
 }
 
@@ -75,7 +112,7 @@ void	get_rgb(t_map *map, t_data *data)
 			atoi_rgb(data->c_rgb, tmp);
 			free_double_arr(tmp);
 		}
-		else if (!!ft_strncmp(map->map[i], "F", 1))
+		else if (!ft_strncmp(map->map[i], "F", 1))
 		{
 			tmp = ft_split(ft_strchr(map->map[i], 32) + 1, ',');
 			atoi_rgb(data->f_rgb, tmp);

@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:08:25 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/19 13:23:21 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/19 15:50:46 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_map_error(int num_error)
 	if (num_error == 3)
 	{
 		ft_putendl_fd("Error", STDERR_FILENO);
-		ft_putendl_fd("invalid rgb : must be a value from 0 to 255", STDERR_FILENO);
+		ft_putendl_fd("Invalid rgb: [0 - 255]", STDERR_FILENO);
 	}
 	exit(1);
 }
@@ -98,4 +98,6 @@ void	parse_map(t_map *map, char *path, t_program *game)
 	while (++i < 6)
 		map->map[i] = ft_epurstr(map->map[i]);
 	get_rgb(map, game->data);
+	get_textures(map, game->data);
+	trim_file(map);
 }

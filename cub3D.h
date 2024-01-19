@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/19 12:50:52 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:12:57 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,14 @@ typedef struct s_map
 
 typedef struct s_data
 {
-	char	*map_path;
 	void	*mlx;
 	void	*window;
 	int		c_rgb[3];
 	int		f_rgb[3];
+	char	*n_texture;
+	char	*s_texture;
+	char	*w_texture;
+	char	*e_texture;
 }	t_data;
 
 typedef struct s_program
@@ -60,11 +63,16 @@ bool	check_map(t_program *game);
 void	parse_map(t_map *map, char *path, t_program *game);
 //map_utils.c
 void	get_rgb(t_map *map, t_data *data);
+void	trim_file(t_map *map);
 //epurstr
 char	*ft_epurstr(char *str);
 //keymaping.c
 int		deal_key(int key, t_program *game);
 //main.c
 int		end_game(t_program *game);
+//utils.c
+void	free_double_arr(char **arr);
+//textures_handling.c
+void	get_textures(t_map *map, t_data *data);
 
 #endif

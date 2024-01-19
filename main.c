@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:20 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/19 15:17:54 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:19:42 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	end_game(t_program *game)
 	mlx_clear_window(game->data->mlx, game->data->window);
 	mlx_destroy_window(game->data->mlx, game->data->window);
 	ft_printf("GAME ENDED\n");
-	exit(100);
+	exit(1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/19 17:12:57 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/19 19:09:10 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,25 @@
 # define UP 126
 # define ESC 53
 
+# define INVALID_CHAR "Map: invalid chars in  map"
+# define RGB_RANGE "Invalid rgb: [0 - 255]"
+# define PERIMETER_ERROR "Invalid map perimeter"
+
+typedef enum s_direc
+{
+	NONE = 0,
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST
+}	t_direc;
 typedef struct s_map
 {
 	char	**map;
+	int		start_x;
+	int		start_y;
+	bool	valid_chars;
+	t_direc	s_direc;
 }	t_map;
 
 typedef struct s_data
@@ -74,5 +90,8 @@ int		end_game(t_program *game);
 void	free_double_arr(char **arr);
 //textures_handling.c
 void	get_textures(t_map *map, t_data *data);
+//map_error
+void	ft_map_error(int num_error);
+void	print_error(char *str);
 
 #endif

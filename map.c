@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:08:25 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/19 15:50:46 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/19 18:53:54 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 bool	check_map(t_program *game)
 {
-	(void) game;
-	return (true);
+	count_assets(game);
+	if (!check_walls(game->map))
+		ft_map_error(4);
+	if (!check_assets(game))
+		ft_map_error(5);
 }
 
 bool	check_map_ext(char *path, char *ext)
@@ -38,26 +41,6 @@ bool	check_map_ext(char *path, char *ext)
 		k--;
 	}
 	return (true);
-}
-
-void	ft_map_error(int num_error)
-{
-	if (num_error == 1)
-	{
-		ft_putendl_fd("Error", STDERR_FILENO);
-		perror(" ");
-	}
-	if (num_error == 2)
-	{
-		ft_putendl_fd("Error", STDERR_FILENO);
-		ft_putendl_fd("invalid map", STDERR_FILENO);
-	}
-	if (num_error == 3)
-	{
-		ft_putendl_fd("Error", STDERR_FILENO);
-		ft_putendl_fd("Invalid rgb: [0 - 255]", STDERR_FILENO);
-	}
-	exit(1);
 }
 
 void	get_map(t_map *map, char *path)

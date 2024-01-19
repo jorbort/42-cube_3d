@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:20 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/18 20:28:07 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:58:31 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int	end_game(t_program *game)
 
 void	start_game(t_program *game, char *map_path)
 {
-	int i = 0;
-	parse_map(game->map, map_path);
-	while (game->map->map[i])
-		printf("%s\n", game->map->map[i++]);
+	//int i = 0;
+	parse_map(game->map, map_path, game);
+	/*while (game->map->map[i])
+		printf("%s\n", game->map->map[i++]);*/
 	if (check_map(game) == true)
 	{
 		game->data->mlx = mlx_init();

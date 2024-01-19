@@ -1,6 +1,6 @@
 NAME=cub3D
 FLAGS= -Wall -Werror -Wextra -g -fsanitize=address
-SRC= main.c inits.c map.c ft_epurstr.c key_maping.c
+SRC= main.c inits.c map.c ft_epurstr.c key_maping.c map_utils.c
 CC = gcc
 MLX_PATH = mlx/
 MLX_LIB = $(MLX_PATH)libmlx.a

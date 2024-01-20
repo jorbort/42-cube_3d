@@ -6,11 +6,11 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:34:01 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/19 14:34:18 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:30:19 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../../includes/cub3D.h"
 
 void	free_double_arr(char **arr)
 {
@@ -24,4 +24,11 @@ void	free_double_arr(char **arr)
 	}
 	free(arr);
 	arr = NULL;
+}
+
+bool	not_valid_char(char c)
+{
+	if (c != 'W' && c != 'N' && c != 'E' && c != 'S' && c != 'F' && c != 'C')
+		return (true);
+	return (false);
 }

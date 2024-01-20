@@ -6,11 +6,11 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:20 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/19 17:19:42 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:11:42 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "includes/cub3D.h"
 
 int	end_game(t_program *game)
 {

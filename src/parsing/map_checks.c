@@ -6,11 +6,11 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:16:31 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/19 20:21:32 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:35:02 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../../includes/cub3D.h"
 
 bool	is_valid_char(char c)
 {
@@ -34,7 +34,7 @@ bool	check_top_bottom(t_map *map)
 			return (false);
 		i++;
 	}
-	i = ft_arrlen(map->map);
+	i = ft_arrlen(map->map) - 1;
 	while (map->map[i][j])
 	{
 		if (!is_valid_char(map->map[i][j]))
@@ -50,9 +50,9 @@ bool	check_top_bottom(t_map *map)
 
 bool	check_walls(t_map *map)
 {
-	if (!check_top(map))
-		return (false);
-	if (!check_sides(map))
-		return (false);
+	if (!check_top_bottom(map))
+		ft_map_error(4);
+	/*if (!check_sides(map))
+		ft_map_error(4);*/
 	return (true);
 }

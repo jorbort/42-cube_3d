@@ -6,18 +6,17 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:08:25 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/19 19:17:23 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:30:28 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../../includes/cub3D.h"
 
 bool	check_map(t_program *game)
 {
-	if (!check_walls(game->map))
-		ft_map_error(4);
-	if (!check_assets(game))
-		ft_map_error(5);
+	check_walls(game->map);
+	//check_assets(game);
+	return (true);
 }
 
 bool	check_map_ext(char *path, char *ext)
@@ -71,6 +70,35 @@ void	get_map(t_map *map, char *path)
 	free(all_lines);
 }
 
+void	check_identifiers(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < 6)
+	{
+		if (map->map[i][0] == 'N' && map->map[i][1] != 'O'
+			&& map->map[i][2] != ' ')
+			ft_map_error(5);
+		if (map->map[i][0] == 'W' && map->map [i][1] != 'E'
+			&& map->map[i][2] != ' ')
+			ft_map_error(5);
+		if (map->map[i][0] == 'S' && map->map [i][1] != 'O'
+			&& map->map[i][2] != ' ')
+			ft_map_error(5);
+		if (map->map[i][0] == 'W' && map->map [i][1] != 'E'
+			&& map->map[i][2] != ' ')
+			ft_map_error(5);
+		if (map->map[i][0] == 'C' && map->map [i][1] != ' ')
+			ft_map_error(5);
+		if (map->map[i][0] == 'F' && map->map [i][1] != ' ')
+			ft_map_error(5);
+		if (not_valid_char(map->map[i][0]))
+			ft_map_error(5);
+		i++;
+	}
+}
+
 void	parse_map(t_map *map, char *path, t_program *game)
 {
 	int		i;
@@ -79,6 +107,7 @@ void	parse_map(t_map *map, char *path, t_program *game)
 	get_map(map, path);
 	while (++i < 6)
 		map->map[i] = ft_epurstr(map->map[i]);
+	check_identifiers(map);
 	get_rgb(map, game->data);
 	get_textures(map, game->data);
 	trim_file(map);

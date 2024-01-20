@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/19 20:22:35 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:16:09 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define CUB3D_H
 
 # include <math.h>
-# include "libft/libft.h"
-# include "mlx/mlx.h"
+# include "../libft/libft.h"
+# include "../mlx/mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -78,7 +78,7 @@ bool	check_map_ext(char *path, char *ext);
 bool	check_map(t_program *game);
 void	parse_map(t_map *map, char *path, t_program *game);
 //map_utils.c
-void	get_rgb(t_map *map, t_data *data);
+bool	get_rgb(t_map *map, t_data *data);
 void	trim_file(t_map *map);
 int		ft_arrlen(char **s);
 //epurstr
@@ -89,10 +89,13 @@ int		deal_key(int key, t_program *game);
 int		end_game(t_program *game);
 //utils.c
 void	free_double_arr(char **arr);
+bool	not_valid_char(char c);
 //textures_handling.c
 void	get_textures(t_map *map, t_data *data);
 //map_error.c
 void	ft_map_error(int num_error);
 void	print_error(char *str);
+//map_checks.c
+bool	check_walls(t_map *map);
 
 #endif

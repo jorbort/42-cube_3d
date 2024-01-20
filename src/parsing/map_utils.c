@@ -6,11 +6,11 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:41:15 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/19 17:13:26 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:11:10 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../../includes/cub3D.h"
 
 int	ft_arrlen(char **s)
 {
@@ -98,7 +98,7 @@ void	atoi_rgb(int *rgb, char **str)
 	}
 }
 
-void	get_rgb(t_map *map, t_data *data)
+bool	get_rgb(t_map *map, t_data *data)
 {
 	char	**tmp;
 	int		i;
@@ -120,4 +120,5 @@ void	get_rgb(t_map *map, t_data *data)
 		}
 		i++;
 	}
+	return (false);
 }

@@ -31,9 +31,11 @@ clean :
 	rm -f *.o
 
 git : fclean
-	git add *
-	git commit -m "auto commit"
+	@read -p "Enter commit message: " commit_message; \
+    git add *; \
+    git commit -m "$$commit_message"
 	git push
+
 
 
 fclean : clean

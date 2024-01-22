@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/22 19:08:27 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/23 00:20:40 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,9 @@ char	*ft_epurstr(char *str);
 int		deal_key(int key, t_program *game);
 //main.c
 int		end_game(t_program *game);
+
+void print_grid(t_program *game);
+
 //utils.c
 void	free_double_arr(char **arr);
 bool	not_valid_char(char c);

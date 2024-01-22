@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_maping.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 20:25:16 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/20 13:11:51 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/23 00:25:03 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,26 @@
 
 int	deal_key(int key, t_program *game)
 {
-	/*if (key == LEFT || key == 0)
-		move(map, map->sprites.player, LEFT);
-	else if (key == RIGHT || key == 2)
-		move(map, map->sprites.player, RIGHT);
-	else if (key == DOWN || key == 1)
-		move(map, map->sprites.player, DOWN);
-	else if (key == UP || key == 13)
-		move(map, map->sprites.player, UP);*/
+	if (key == LEFT)// || key == 0)
+	{
+		game->map->start_x -= 10;
+		print_grid(game);
+	}
+	else if (key == RIGHT)// || key == 2)
+	{
+		game->map->start_x += 10;
+		print_grid(game);
+	}
+	else if (key == DOWN)// || key == 1)
+	{
+		game->map->start_y += 10;
+		print_grid(game);
+	}
+	else if (key == UP)// || key == 13)
+	{
+		game->map->start_y -= 10;
+		print_grid(game);
+	}
 	if (key == ESC)
 		end_game(game);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:16:31 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/22 16:20:12 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/22 20:11:39 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ bool	check_perimeter(char **mapa, int row, int col)
 	if (!map_copy)
 		ft_map_error(7);
 	flood_fill(map_copy, row, col);
-	while (map_copy[i])
-		printf("%s\n", map_copy[i++]);
 	if (!check_top_bottom(map_copy))
 	{
 		free_double_arr(map_copy);

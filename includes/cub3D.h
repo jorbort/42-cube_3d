@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/20 13:16:09 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:40:47 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define INVALID_CHAR "Map: invalid chars in  map"
 # define RGB_RANGE "Invalid rgb: [0 - 255]"
 # define PERIMETER_ERROR "Invalid map perimeter"
+# define REAPEATED_START "More than one starting position"
+# define MALLOC_ERROR "Failed malloc"
 
 typedef enum s_direc
 {
@@ -90,6 +92,7 @@ int		end_game(t_program *game);
 //utils.c
 void	free_double_arr(char **arr);
 bool	not_valid_char(char c);
+int		ft_strlen_cub(char *s);
 //textures_handling.c
 void	get_textures(t_map *map, t_data *data);
 //map_error.c

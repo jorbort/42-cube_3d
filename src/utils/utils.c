@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:34:01 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/20 13:30:19 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/22 13:50:33 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,17 @@ bool	not_valid_char(char c)
 	if (c != 'W' && c != 'N' && c != 'E' && c != 'S' && c != 'F' && c != 'C')
 		return (true);
 	return (false);
+}
+
+int	ft_strlen_cub(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (s)
+	{
+		while (s[i])
+			i++;
+	}
+	return (i);
 }

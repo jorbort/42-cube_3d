@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 18:43:34 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/20 13:11:07 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:41:20 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,9 @@ void	ft_map_error(int num_error)
 		print_error(PERIMETER_ERROR);
 	if (num_error == 5)
 		print_error(INVALID_CHAR);
+	if (num_error == 6)
+		print_error(REAPEATED_START);
+	if (num_error == 7)
+		print_error(MALLOC_ERROR);
 	exit(1);
 }

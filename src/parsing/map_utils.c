@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:41:15 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/20 13:11:10 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:47:47 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ void	trim_file(t_map *map)
 	tmp[j] = NULL;
 	free_double_arr(map->map);
 	map->map = tmp;
-	i = 0;
-	while (map->map[i])
-		printf("%s\n", map->map[i++]);
+	//i = 0;
+// 	while (map->map[i])
+// 		printf("%s\n", map->map[i++]);
+// 	printf("\n");
 }
 
 int	ft_atrgb(char *s)

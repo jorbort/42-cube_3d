@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/22 14:40:47 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/22 19:08:27 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,34 @@ typedef enum s_direc
 	WEST,
 	EAST
 }	t_direc;
+
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_img;
+
+typedef struct s_vec
+{
+	float	player_x;
+	float	player_y;
+	float	dir_x;
+	float	dir_y;
+	float	plane_left_x;
+	float	plane_left_y;
+	float	plane_right_x;
+	float	plane_right_y;
+}	t_vec;
 typedef struct s_map
 {
 	char	**map;
 	int		start_x;
 	int		start_y;
-	bool	valid_chars;
+	int		height;
+	int		width;
 	t_direc	s_direc;
 }	t_map;
 
@@ -100,5 +122,11 @@ void	ft_map_error(int num_error);
 void	print_error(char *str);
 //map_checks.c
 bool	check_walls(t_map *map);
+//map_utils2.c
+bool	check_top_bottom(char **map);
+bool	check_sides(char **map);
+void	define_direction(char c, t_map *map);
+char	**ft_arrdup(char **arr);
+bool	is_start_char(char c);
 
 #endif

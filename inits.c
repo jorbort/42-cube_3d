@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:38:50 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/20 13:11:49 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:58:03 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	init_structs(t_program *game)
 	new_d->window = NULL;
 	game->data = new_d;
 	new_m = malloc(sizeof(t_map));
+	new_m->s_direc = NONE;
 	game->map = new_m;
 }

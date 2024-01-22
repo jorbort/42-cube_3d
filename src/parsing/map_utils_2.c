@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:15:16 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/22 14:39:10 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:10:49 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void	define_direction(char c, t_map *map)
 		map->s_direc = EAST;
 }
 
-char	**arrdup(char **arr)
+char	**ft_arrdup(char **arr)
 {
 	char	**tmp;
 	int		i;
 
 	i = 0;
-	tmp = malloc(sizeof(char **) * ft_arrlen(arr));
+	tmp = malloc(sizeof(char *) * (ft_arrlen(arr) + 1));
 	if (!tmp)
 		return (NULL);
 	while (arr[i])
@@ -47,4 +47,50 @@ char	**arrdup(char **arr)
 	}
 	tmp[i] = NULL;
 	return (tmp);
+}
+
+bool	check_sides(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		if (map[i][0] == 'X')
+			return (false);
+		i++;
+	}
+	i = 0;
+	while (map[i])
+	{
+		j = ft_strlen_cub(map[i]) - 1;
+		if (map[i][j] == 'X')
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
+bool	check_top_bottom(char **map)
+{
+	int	j;
+	int	i;
+
+	j = 0;
+	i = ft_arrlen(map) - 1;
+	while (map[0][j])
+	{
+		if (map[0][j] == 'X')
+			return (false);
+		j++;
+	}
+	j = 0;
+	while (map[i][j])
+	{
+		if (map[i][j] == 'X')
+			return (false);
+		j++;
+	}
+	return (true);
 }

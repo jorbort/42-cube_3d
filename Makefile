@@ -2,7 +2,7 @@ NAME=cub3D
 FLAGS= -Wall -Werror -Wextra -g -fsanitize=address
 SRC= main.c inits.c   key_maping.c \
 	src/utils/utils.c \
-	src/parsing/ft_epurstr.c src/parsing/map_utils.c src/parsing/map_error.c src/parsing/map.c src/parsing/textures_handling.c src/parsing/map_checks.c\
+	src/parsing/ft_epurstr.c src/parsing/map_utils.c src/parsing/map_error.c src/parsing/map.c src/parsing/textures_handling.c src/parsing/map_checks.c src/parsing/map_utils_2.c\
 
 CC = gcc
 MLX_PATH = mlx/
@@ -30,7 +30,7 @@ clean :
 	make -C $(LIBFT_PATH) clean
 	rm -f *.o
 
-git :
+git : fclean
 	git add *
 	git commit -m "auto commit"
 	git push

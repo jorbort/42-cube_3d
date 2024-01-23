@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:20 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/23 16:27:44 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/23 18:58:14 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,8 @@ void	start_game(t_program *game, char *map_path)
 				1300, 1100, "cub3D");
 		game->map->start_x *= 10;
 		game->map->start_y *= 10;
+		init_vec(game);
+		cast_ray(game);
 		calc_true_start(game);
 		print_grid(game);
 		mlx_hook(game->data->window, 17, 0, end_game, game);

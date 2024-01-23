@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/23 18:34:11 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/23 18:54:40 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,16 @@ typedef struct s_img
 
 typedef struct s_vec
 {
-	float	player_x;
-	float	player_y;
-	float	dir_x;
-	float	dir_y;
-	float	plane_left_x;
-	float	plane_left_y;
-	float	plane_right_x;
-	float	plane_right_y;
+	double	player_x;
+	double	player_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_left_x;
+	double	plane_left_y;
+	double	plane_right_x;
+	double	plane_right_y;
+	double	fr_time;
+	double	prev_fr_time;
 }	t_vec;
 typedef struct s_map
 {
@@ -91,6 +93,7 @@ typedef struct s_program
 {
 	t_data		*data;
 	t_map		*map;
+	t_vec		*vector;
 
 }	t_program;
 

@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:20 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/23 13:13:27 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/23 16:27:44 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void print_grid(t_program *game)
         x += game->map->cell_wi;
     }
 	ft_put_2d_walls(game, &img, game->map->cell_he, game->map->cell_wi);
-	draw_filled_circle(&img, game->map->start_x, game->map->start_y, 10);
+	draw_filled_circle(&img, game->map->start_x, game->map->start_y, 2);
 	mlx_put_image_to_window(game->data->mlx, game->data->window, img.img, 0, 0);
 }
 

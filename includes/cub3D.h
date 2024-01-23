@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/23 13:14:49 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/23 18:34:11 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ typedef struct s_map
 	int		start_y;
 	int		height;
 	int		width;
-	int 	cell_wi;
-	int 	cell_he;
+	int		cell_wi;
+	int		cell_he;
 	t_direc	s_direc;
 }	t_map;
 
@@ -127,6 +127,7 @@ void	ft_map_error(int num_error);
 void	print_error(char *str);
 //map_checks.c
 bool	check_walls(t_map *map);
+int	is_valid_cell(char **mapa, int row, int col);
 //map_utils2.c
 bool	check_top_bottom(char **map);
 bool	check_sides(char **map);
@@ -135,5 +136,7 @@ char	**ft_arrdup(char **arr);
 bool	is_start_char(char c);
 //calc.c
 void	calc_true_start(t_program *game);
+//colision.h
+int		circle_colision(int circleX, int circleY, int radius, t_program *game);
 
 #endif

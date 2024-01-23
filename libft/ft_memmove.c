@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:34:47 by jbortolo          #+#    #+#             */
-/*   Updated: 2023/07/17 13:42:21 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/23 18:18:34 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	if (ptrs < ptrd)
 	{
 		ptrd += len - 1;
-		ptrs += len -1;
+		ptrs += len - 1;
 		while (len--)
 		{
 			*ptrd = *ptrs;

@@ -3,89 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:20 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/23 00:23:02 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/23 13:13:27 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3D.h"
-
-int	ft_longest(char **map)
-{
-	int	i;
-	int	j;
-	int	len;
-
-	i = 0;
-	j = 0;
-	len = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-			j++;
-		if (j > len)
-			len = j;
-		i++;
-	}
-	return (len);
-}
-
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
 	char	*dst;
 
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-void draw_filled_circle(void *win, int xc, int yc, int radius)
-{
-	int fill_color = 0xFF0000;
-    int x = radius;
-    int y = 0;
-    int err = 0;
-
-    while (x >= y)
-    {
-        // Draw horizontal lines to fill the circle
-        for (int i = xc - x; i <= xc + x; i++)
-        {
-            my_mlx_pixel_put(win, i, yc + y, fill_color);
-            my_mlx_pixel_put(win, i, yc - y, fill_color);
-        }
-
-        // Draw vertical lines to fill the circle
-        for (int i = xc - y; i <= xc + y; i++)
-        {
-            my_mlx_pixel_put(win, i, yc + x, fill_color);
-            my_mlx_pixel_put(win, i, yc - x, fill_color);
-        }
-
-        if (err <= 0)
-        {
-            y += 1;
-            err += 2 * y + 1;
-        }
-        if (err > 0)
-        {
-            x -= 1;
-            err -= 2 * x + 1;
-        }
-    }
+	*(unsigned int *)dst = color;
 }
 
-
-void fill_square(int i, int j, int he, int wi, t_img *img)
+void	draw_filled_circle(void *win, int xc, int yc, int radius)
 {
-	int x;
-	int y;
-	int xlim;
-	int ylim;
+    int	x = radius;
+    int	y = 0;
+    int	err = 0;
 
-	
+	while (x >= y)
+	{
+		for (int i = xc - x; i <= xc + x; i++)
+		{
+			my_mlx_pixel_put(win, i, yc + y, 0xFF0000);
+			my_mlx_pixel_put(win, i, yc - y, 0xFF0000);
+		}
+		for (int i = xc - y; i <= xc + y; i++)
+		{
+			my_mlx_pixel_put(win, i, yc + x, 0xFF0000);
+			my_mlx_pixel_put(win, i, yc - x, 0xFF0000);
+		}
+		if (err <= 0)
+		{
+			y += 1;
+			err += 2 * y + 1;
+		}
+		if (err > 0)
+		{
+			x -= 1;
+			err -= 2 * x + 1;
+		}
+	}
+}
+
+void	fill_square(int i, int j, int he, int wi, t_img *img)
+{
+	int	x;
+	int	y;
+	int	xlim;
+	int	ylim;
+
 	y = he * i;
 	x = wi * j;
 	xlim = x + wi;
@@ -95,13 +67,11 @@ void fill_square(int i, int j, int he, int wi, t_img *img)
 		y = he * i;
 		while (y <= ylim)
 		{
-			my_mlx_pixel_put(img, x, y, 0x0000FFFF);
+			my_mlx_pixel_put(img, x, y, 0x000FFFFF);
 			y++;
 		}
-	x++;
+		x++;
 	}
-
-
 }
 
 void	ft_put_2d_walls(t_program *game, t_img *img, int he, int wi)
@@ -117,34 +87,15 @@ void	ft_put_2d_walls(t_program *game, t_img *img, int he, int wi)
 		{
 			if (game->map->map[i][j] == '1')
 				fill_square(i, j, he, wi, img);
-		j++;
+			j++;
 		}
-	i++;
+		i++;
 	}
 }
 
 void print_grid(t_program *game)
 {
 	t_img	img;
-
-	int wi;
-	int he;
-
-	game->map->height = ft_arrlen(game->map->map);
-	
-	game->map->width = ft_longest(game->map->map);
-	if (game->map->width > game->map->height)
-		{
-			wi = 1200 / game->map->width;
-			he = 1000 / game->map->width;
-		}
-	else 
-	{
-		{
-			wi = 1200 / game->map->height;
-			he = 1000 / game->map->height;
-		}
-	}
 
 	img.img = mlx_new_image(game->data->mlx, 1210, 1010);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
@@ -154,14 +105,13 @@ void print_grid(t_program *game)
 	while (y <= 1000)
     {
         i = 0;
-        while (i <= 1200)
+		while (i <= 1200)
         {
             my_mlx_pixel_put(&img, i, y, 0x0000FFFF);
             i++;
         }
-        y += he;
+        y += game->map->cell_he;
     }
-
 	while (x <= 1200)
     {
         j = 0;
@@ -170,9 +120,9 @@ void print_grid(t_program *game)
             my_mlx_pixel_put(&img, x, j, 0x0000FFFF);
             j++;
         }
-        x += wi;
+        x += game->map->cell_wi;
     }
-	ft_put_2d_walls(game, &img, he, wi);
+	ft_put_2d_walls(game, &img, game->map->cell_he, game->map->cell_wi);
 	draw_filled_circle(&img, game->map->start_x, game->map->start_y, 10);
 	mlx_put_image_to_window(game->data->mlx, game->data->window, img.img, 0, 0);
 }
@@ -197,6 +147,7 @@ void	start_game(t_program *game, char *map_path)
 				1300, 1100, "cub3D");
 		game->map->start_x *= 10;
 		game->map->start_y *= 10;
+		calc_true_start(game);
 		print_grid(game);
 		mlx_hook(game->data->window, 17, 0, end_game, game);
 		mlx_key_hook(game->data->window, deal_key, game);

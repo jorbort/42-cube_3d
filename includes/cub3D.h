@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/23 00:20:40 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/23 13:14:49 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 # include <stdio.h>
 # include <stdbool.h>
 
-# define LEFT 123
-# define RIGHT 124
-# define DOWN 125
-# define UP 126
+# define LEFT 0
+# define RIGHT 2
+# define DOWN 1
+# define UP 13
 # define ESC 53
 
 # define INVALID_CHAR "Map: invalid chars in  map"
@@ -70,6 +70,8 @@ typedef struct s_map
 	int		start_y;
 	int		height;
 	int		width;
+	int 	cell_wi;
+	int 	cell_he;
 	t_direc	s_direc;
 }	t_map;
 
@@ -112,7 +114,7 @@ int		deal_key(int key, t_program *game);
 //main.c
 int		end_game(t_program *game);
 
-void print_grid(t_program *game);
+void	print_grid(t_program *game);
 
 //utils.c
 void	free_double_arr(char **arr);
@@ -131,5 +133,7 @@ bool	check_sides(char **map);
 void	define_direction(char c, t_map *map);
 char	**ft_arrdup(char **arr);
 bool	is_start_char(char c);
+//calc.c
+void	calc_true_start(t_program *game);
 
 #endif

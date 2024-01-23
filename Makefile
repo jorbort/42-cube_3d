@@ -2,8 +2,9 @@ NAME=cub3D
 FLAGS= -Wall -Werror -Wextra -g -fsanitize=address
 SRC= main.c inits.c   key_maping.c \
 	src/utils/utils.c \
-	src/parsing/ft_epurstr.c src/parsing/map_utils.c src/parsing/map_error.c src/parsing/map.c src/parsing/textures_handling.c src/parsing/map_checks.c src/parsing/map_utils_2.c\
-
+	src/parsing/ft_epurstr.c src/parsing/map_utils.c src/parsing/map_error.c src/parsing/map.c src/parsing/textures_handling.c src/parsing/map_checks.c src/parsing/map_utils_2.c \
+	src/calculations/calc.c\
+	
 CC = gcc
 MLX_PATH = mlx/
 MLX_LIB = $(MLX_PATH)libmlx.a

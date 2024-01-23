@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/23 18:54:40 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/24 00:22:01 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void	ft_map_error(int num_error);
 void	print_error(char *str);
 //map_checks.c
 bool	check_walls(t_map *map);
-int	is_valid_cell(char **mapa, int row, int col);
+int		is_valid_cell(char **mapa, int row, int col);
 //map_utils2.c
 bool	check_top_bottom(char **map);
 bool	check_sides(char **map);
@@ -140,6 +140,6 @@ bool	is_start_char(char c);
 //calc.c
 void	calc_true_start(t_program *game);
 //colision.h
-int		circle_colision(int circleX, int circleY, int radius, t_program *game);
+int		is_in_bounds(int x, int y, t_program *game);
 
 #endif

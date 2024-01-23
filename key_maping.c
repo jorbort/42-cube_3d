@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_maping.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 20:25:16 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/23 18:26:14 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/24 00:28:11 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,24 @@
 int	deal_key(int key, t_program *game)
 {
 
-	if (key == LEFT)
+	if (key == LEFT && !is_in_bounds(game->map->start_x - 8, game->map->start_y, game))
 	{
-		game->map->start_x -= (game->map->cell_wi / 10);
+		game->map->start_x -= 8;
 		print_grid(game);
 	}
-	else if (key == RIGHT)
+	else if (key == RIGHT && !is_in_bounds(game->map->start_x + 8, game->map->start_y, game))
 	{
-		game->map->start_x += (game->map->cell_wi / 10);
+		game->map->start_x += 8;
 		print_grid(game);
 	}
-	else if (key == DOWN && !circle_colision(game->map->start_x, game->map->start_y, 5, game))
+	else if (key == DOWN && !is_in_bounds(game->map->start_x, game->map->start_y + 8, game))
 	{
-		
-		game->map->start_y += (game->map->cell_he / 10);
+		game->map->start_y += 8;
 		print_grid(game);
 	}
-	else if (key == UP && !circle_colision(game->map->start_x, game->map->start_y, 5, game))
+	else if (key == UP && !is_in_bounds(game->map->start_x, game->map->start_y - 8, game))
 	{
-		game->map->start_y -= (game->map->cell_he / 10);
+		game->map->start_y -= 8;
 		print_grid(game);
 	}
 	if (key == ESC)

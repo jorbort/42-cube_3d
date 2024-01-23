@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:20 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/23 18:58:14 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/24 00:29:37 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,27 +102,27 @@ void print_grid(t_program *game)
 			&img.endian);
 	int x = 0, y = 0, i= 0, j = 0;
 
-	while (y <= 1000)
+	while (y <= (16 * ft_arrlen(game->map->map)))
     {
         i = 0;
-		while (i <= 1200)
+		while (i <= (16 * 24))
         {
             my_mlx_pixel_put(&img, i, y, 0x0000FFFF);
             i++;
         }
-        y += game->map->cell_he;
+        y+= 16;
     }
-	while (x <= 1200)
+	while (x <= (16 * 24))
     {
         j = 0;
-        while (j <= 1000)
+        while (j <= (16 * ft_arrlen(game->map->map)))
         {
             my_mlx_pixel_put(&img, x, j, 0x0000FFFF);
             j++;
         }
-        x += game->map->cell_wi;
+        x+= 16;
     }
-	ft_put_2d_walls(game, &img, game->map->cell_he, game->map->cell_wi);
+	ft_put_2d_walls(game, &img, 16, 16);
 	draw_filled_circle(&img, game->map->start_x, game->map->start_y, 2);
 	mlx_put_image_to_window(game->data->mlx, game->data->window, img.img, 0, 0);
 }
@@ -145,11 +145,11 @@ void	start_game(t_program *game, char *map_path)
 		game->data->mlx = mlx_init();
 		game->data->window = mlx_new_window(game->data->mlx,
 				1300, 1100, "cub3D");
-		game->map->start_x *= 10;
-		game->map->start_y *= 10;
-		init_vec(game);
-		cast_ray(game);
-		calc_true_start(game);
+		game->map->start_x *= 16;
+		game->map->start_y *= 16;
+		//init_vec(game);
+		//cast_ray(game);
+		//calc_true_start(game);
 		print_grid(game);
 		mlx_hook(game->data->window, 17, 0, end_game, game);
 		mlx_key_hook(game->data->window, deal_key, game);

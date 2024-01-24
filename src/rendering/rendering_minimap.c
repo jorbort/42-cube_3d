@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:49:41 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 14:49:36 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:57:25 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ void	put_vertical_lines_2_img(t_img *img, char **game_map)
 
 	i = 0;
 	y = 0;
-	while (y <= (16 * ft_arrlen(game_map)))
+	while (y <= (GRID_SIZE * ft_arrlen(game_map)))
 	{
 		i = 0;
-		while (i <= (16 * 24))
+		while (i <= (GRID_SIZE * ft_longest(game_map)))
 		{
-			my_mlx_pixel_put(img, i, y, 0x0000FFFF);
+			my_mlx_pixel_put(img, i, y, 0X990000E6);
 			i++;
 		}
-		y += 16;
+		y += GRID_SIZE;
 	}
 }
 
@@ -38,15 +38,15 @@ void	put_horizontal_lines_2_img(t_img *img, char **game_map)
 
 	x = 0;
 	j = 0;
-	while (x <= (16 * 24))
+	while (x <= (GRID_SIZE * ft_longest(game_map)))
 	{
 		j = 0;
-		while (j <= (16 * ft_arrlen(game_map)))
+		while (j <= (GRID_SIZE * ft_arrlen(game_map)))
 		{
-			my_mlx_pixel_put(img, x, j, 0x0000FFFF);
+			my_mlx_pixel_put(img, x, j, 0X990000E6);
 			j++;
 		}
-		x += 16;
+		x += GRID_SIZE;
 	}
 }
 
@@ -64,7 +64,8 @@ void	print_grid(t_program *game)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
 	put_grid_2_img(&img, game->map->map);
-	ft_put_2d_walls(game, &img, 16, 16);
+	ft_put_2d_walls(game, &img);
 	draw_filled_circle(&img, game->map->start_x, game->map->start_y);
+	color_map(game, &img);
 	mlx_put_image_to_window(game->data->mlx, game->data->window, img.img, 0, 0);
 }

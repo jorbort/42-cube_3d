@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colision.c                                         :+:      :+:    :+:   */
+/*   color_floor_cieling.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 16:22:32 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 16:41:28 by jbortolo         ###   ########.fr       */
+/*   Created: 2024/01/24 17:50:31 by jbortolo          #+#    #+#             */
+/*   Updated: 2024/01/24 18:03:12 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-int	is_in_bounds(int x, int y, t_program *game)
+void	color_map(t_program *game, t_img *img)
 {
-	int	max;
-	int	may;
-	int	mix;
-	int	miy;
+	int	height;
+	int	width;
+	int i;
+	int j;
 
-	max = (x + 4) / GRID_SIZE;
-	may = (y + 4) / GRID_SIZE;
-	mix = (x - 4) / GRID_SIZE;
-	miy = (y - 4) / GRID_SIZE;
-	if (game->map->map[may][max] == '1' || game->map->map[may][mix] == '1' ||
-		game->map->map[miy][max] == '1' || game->map->map[miy][mix] == '1')
-		return (1);
-	else
-		return (0);
+	height = ft_arrlen(game->map->map);
+	width = ft_longest(game->map->map);
+	while (i < (height / 2))
+	{
+		j = 0;
+		while ( j < width)
+		{
+			my_mlx_pixel_put(img , j, i, game->data->hex_ceil);
+		}
+	}
+	while (i < height)
 }

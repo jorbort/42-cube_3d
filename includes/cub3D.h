@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 14:28:18 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:59:03 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define DOWN 1
 # define UP 13
 # define ESC 53
+# define GRID_SIZE 32
 
 # define INVALID_CHAR "Map: invalid chars in  map"
 # define RGB_RANGE "Invalid rgb: [0 - 255]"
@@ -83,6 +84,8 @@ typedef struct s_data
 	void	*window;
 	int		c_rgb[3];
 	int		f_rgb[3];
+	int		hex_ceil;
+	int		hex_floor;
 	char	*n_texture;
 	char	*s_texture;
 	char	*w_texture;
@@ -123,6 +126,7 @@ void	print_grid(t_program *game);
 void	free_double_arr(char **arr);
 bool	not_valid_char(char c);
 int		ft_strlen_cub(char *s);
+bool	is_invalid(char c);
 //textures_handling.c
 void	get_textures(t_map *map, t_data *data);
 //map_error.c
@@ -145,5 +149,5 @@ int		is_in_bounds(int x, int y, t_program *game);
 void	print_grid(t_program *game);
 //rendering_minimap_2.c
 void	draw_filled_circle(void *win, int xc, int yc);
-void	ft_put_2d_walls(t_program *game, t_img *img, int he, int wi);
+void	ft_put_2d_walls(t_program *game, t_img *img);
 #endif

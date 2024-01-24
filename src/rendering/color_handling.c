@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colision.c                                         :+:      :+:    :+:   */
+/*   color_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 16:22:32 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 16:41:28 by jbortolo         ###   ########.fr       */
+/*   Created: 2024/01/24 17:41:41 by jbortolo          #+#    #+#             */
+/*   Updated: 2024/01/24 17:59:43 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-int	is_in_bounds(int x, int y, t_program *game)
+int	rgb_2_hex(int r, int g, int b)
 {
-	int	max;
-	int	may;
-	int	mix;
-	int	miy;
+	return ((r << 16) | (g << 8) | b);
+}
 
-	max = (x + 4) / GRID_SIZE;
-	may = (y + 4) / GRID_SIZE;
-	mix = (x - 4) / GRID_SIZE;
-	miy = (y - 4) / GRID_SIZE;
-	if (game->map->map[may][max] == '1' || game->map->map[may][mix] == '1' ||
-		game->map->map[miy][max] == '1' || game->map->map[miy][mix] == '1')
-		return (1);
-	else
-		return (0);
+void	get_ceiling_floor_color(t_data *data)
+{
+	data->hex_ceil = rgb_2_hex(data->c_rgb[0], data->c_rgb[1], data->c_rgb[2]);
+	data->hex_floor = rgb_2_hex(data->f_rgb[0], data->f_rgb[1], data->f_rgb[2]);
 }

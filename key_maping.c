@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 20:25:16 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 14:01:25 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:47:50 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	deal_key_2(int key, t_program *game)
 	if (key == ESC)
 		end_game(game);
 	if (key == UP
-		&& !is_in_bounds(game->map->start_x, game->map->start_y - 8, game))
+		&& !is_in_bounds(game->map->start_x, game->map->start_y
+			- (GRID_SIZE / 2), game))
 	{
-		printf("up\n");
-		game->map->start_y -= 8;
+		game->map->start_y -= (GRID_SIZE / 2);
 		print_grid(game);
 	}
 	return (0);
@@ -29,24 +29,24 @@ int	deal_key_2(int key, t_program *game)
 int	deal_key(int key, t_program *game)
 {
 	if (key == LEFT
-		&& !is_in_bounds(game->map->start_x - 8, game->map->start_y, game))
+		&& !is_in_bounds(game->map->start_x
+			- (GRID_SIZE / 4) , game->map->start_y, game))
 	{
-		printf("left\n");
-		game->map->start_x -= 8;
+		game->map->start_x -= (GRID_SIZE / 4);
 		print_grid(game);
 	}
 	else if (key == RIGHT
-		&& !is_in_bounds(game->map->start_x + 8, game->map->start_y, game))
+		&& !is_in_bounds(game->map->start_x
+			+ (GRID_SIZE / 4), game->map->start_y, game))
 	{
-		printf("right\n");
-		game->map->start_x += 8;
+		game->map->start_x += (GRID_SIZE / 4);
 		print_grid(game);
 	}
 	else if (key == DOWN
-		&& !is_in_bounds(game->map->start_x, game->map->start_y + 8, game))
+		&& !is_in_bounds(game->map->start_x, game->map->start_y
+			+ (GRID_SIZE / 4), game))
 	{
-		printf("down\n");
-		game->map->start_y += 8;
+		game->map->start_y += (GRID_SIZE / 4);
 		print_grid(game);
 	}
 	deal_key_2(key, game);

@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:55:14 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 17:29:34 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:37:06 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	fill_square(int i, int j, t_img *img)
 		y = GRID_SIZE * i;
 		while (y <= ylim)
 		{
-			my_mlx_pixel_put(img, x, y, 0xff43ff64);
+			my_mlx_pixel_put(img, x, y, 0x43ff64);
 			y++;
 		}
 		x++;

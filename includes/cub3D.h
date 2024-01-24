@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 17:59:03 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:11:32 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@
 # define DOWN 1
 # define UP 13
 # define ESC 53
-# define GRID_SIZE 32
+# define GRID_SIZE 12
+# define WIN_WIDTH 1300
+# define WIN_HEIGHT 1000
 
 # define INVALID_CHAR "Map: invalid chars in  map"
 # define RGB_RANGE "Invalid rgb: [0 - 255]"
@@ -97,6 +99,7 @@ typedef struct s_program
 	t_data		*data;
 	t_map		*map;
 	t_vec		*vector;
+	t_img		*img;
 
 }	t_program;
 
@@ -150,4 +153,6 @@ void	print_grid(t_program *game);
 //rendering_minimap_2.c
 void	draw_filled_circle(void *win, int xc, int yc);
 void	ft_put_2d_walls(t_program *game, t_img *img);
+//color_floor_cieling.c
+void	color_map(t_program *game, t_img *img);
 #endif

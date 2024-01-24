@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:49:41 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 17:57:25 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:36:44 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	put_vertical_lines_2_img(t_img *img, char **game_map)
 		i = 0;
 		while (i <= (GRID_SIZE * ft_longest(game_map)))
 		{
-			my_mlx_pixel_put(img, i, y, 0X990000E6);
+			my_mlx_pixel_put(img, i, y, 0X0000E6);
 			i++;
 		}
 		y += GRID_SIZE;
@@ -43,7 +43,7 @@ void	put_horizontal_lines_2_img(t_img *img, char **game_map)
 		j = 0;
 		while (j <= (GRID_SIZE * ft_arrlen(game_map)))
 		{
-			my_mlx_pixel_put(img, x, j, 0X990000E6);
+			my_mlx_pixel_put(img, x, j, 0X0000E6);
 			j++;
 		}
 		x += GRID_SIZE;

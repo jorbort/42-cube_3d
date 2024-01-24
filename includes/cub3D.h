@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 00:22:01 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/24 14:28:18 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ char	*ft_epurstr(char *str);
 int		deal_key(int key, t_program *game);
 //main.c
 int		end_game(t_program *game);
-
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	print_grid(t_program *game);
 
 //utils.c
@@ -138,8 +138,12 @@ void	define_direction(char c, t_map *map);
 char	**ft_arrdup(char **arr);
 bool	is_start_char(char c);
 //calc.c
-void	calc_true_start(t_program *game);
+int		ft_longest(char **map);
 //colision.h
 int		is_in_bounds(int x, int y, t_program *game);
-
+//rendering_minimap.c
+void	print_grid(t_program *game);
+//rendering_minimap_2.c
+void	draw_filled_circle(void *win, int xc, int yc);
+void	ft_put_2d_walls(t_program *game, t_img *img, int he, int wi);
 #endif

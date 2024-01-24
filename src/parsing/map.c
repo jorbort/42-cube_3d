@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:08:25 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/20 13:30:28 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/24 14:49:12 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 bool	check_map(t_program *game)
 {
 	check_walls(game->map);
-	//check_assets(game);
 	return (true);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:16:31 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/23 10:19:39 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/24 14:46:59 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	is_valid_cell(char **mapa, int row, int col)
 		&& col >= 0 && col < ft_arrlen(mapa));
 }
 
-void	flood_fill(char **mapa, int x, int y)
+void	flood_fill(char **mapa, int y, int x)
 {
 	while (is_valid_cell(mapa, x, y) && (mapa[x][y] != '1'
 		&& mapa[x][y] != 'X' ))
@@ -41,10 +41,6 @@ bool	check_perimeter(char **mapa, int row, int col)
 	if (!map_copy)
 		ft_map_error(7);
 	flood_fill(map_copy, row, col);
-	while (map_copy[i])
-	{
-		printf("%s\n",map_copy[i++]);
-	}
 	if (!check_top_bottom(map_copy))
 	{
 		free_double_arr(map_copy);
@@ -70,6 +66,8 @@ void	get_starting_pos(t_map *map)
 		j = 0;
 		while (map->map[i][j])
 		{
+			if (is_invalid(map->map[i][j]))
+				ft_map_error(5);
 			if (is_start_char(map->map[i][j]) && map->s_direc == NONE)
 			{
 				define_direction(map->map[i][j], map);

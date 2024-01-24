@@ -4,6 +4,7 @@ SRC= main.c inits.c   key_maping.c \
 	src/utils/utils.c \
 	src/parsing/ft_epurstr.c src/parsing/map_utils.c src/parsing/map_error.c src/parsing/map.c src/parsing/textures_handling.c src/parsing/map_checks.c src/parsing/map_utils_2.c \
 	src/calculations/calc.c src/calculations/colision.c \
+	src/rendering/rendering_minimap.c src/rendering/rendering_minimap_2.c \
 	
 CC = gcc
 MLX_PATH = mlx/

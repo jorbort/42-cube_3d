@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:20 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/25 01:06:56 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/25 10:35:41 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ void	start_game(t_program *game, char *map_path)
 		init_vec(game);
 		print_grid(game);
 		mlx_hook(game->data->window, 17, 0, end_game, game);
-		mlx_key_hook(game->data->window, deal_key, game);
+		mlx_hook(game->data->window, 3, 1L << 1, deal_key, game);
+		mlx_hook(game->data->window, 2, 1L << 0, deal_key, game);
+		//mlx_key_hook(game->data->window, deal_key, game);
 		mlx_loop(game->data->mlx);
 	}
 }

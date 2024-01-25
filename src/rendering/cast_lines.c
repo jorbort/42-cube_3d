@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_lines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 23:40:14 by juanantonio       #+#    #+#             */
-/*   Updated: 2024/01/25 01:22:16 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/25 19:17:50 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,24 @@ void draw_line(t_img *img, t_program *game, t_vector start, t_vector end)
 
 void loop_caster(t_program *game)
 {
-	int i;
-	double theta;
+	double i;
+	double increments;
+	//double theta;
 	t_vector vec;
 
-	i = 1;
-	while (i < 66)
+	game->player->dir.x = game->player->pos.x;
+	game->player->dir.y = game->player->pos.y + GRID_SIZE;
+	i = (M_PI / 180) * (to_degrees(game->player->orientation) + 45);
+	increments = (M_PI / 180) * 60 / WIN_WIDTH;
+	while (i > (M_PI / 180) * (to_degrees(game->player->orientation) - 45))
 	{
-		theta = (M_PI / 180) * i;
-		vec = rotate_vector(game->player->pos, game->player->dir, theta);
+		vec = rotate_vector(game->player->pos, game->player->dir, i);
 		draw_line(game->img, game, game->player->pos, vec);
-		i++;
+		i = i - increments;
 	}
+}
+
+double	to_degrees(double radians)
+{
+	return (radians * (180.0 / M_PI));
 }

@@ -32,6 +32,7 @@ $(NAME): $(OBJECTS)
 clean :
 	make -C $(MLX_PATH) clean
 	make -C $(LIBFT_PATH) clean
+	find . -name '*.o' -type f -delete
 
 git : fclean
 	@read -p "Enter commit message: " commit_message; \

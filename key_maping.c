@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_maping.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 20:25:16 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 19:35:35 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/25 19:23:31 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ int	deal_key_2(int key, t_program *game)
 	if (key == ESC)
 		end_game(game);
 	if (key == UP
-		&& !is_in_bounds(game->map->start_x, game->map->start_y
+		&& !is_in_bounds(game->player->pos.x, game->player->pos.y
 			- (GRID_SIZE / 12), game))
 	{
-		game->map->start_y -= (GRID_SIZE / 12);
+		game->player->pos.y -= (GRID_SIZE / 12);
 		print_grid(game);
 	}
 	else if (key == DOWN
-		&& !is_in_bounds(game->map->start_x, game->map->start_y
+		&& !is_in_bounds(game->player->pos.x, game->player->pos.y
 			+ (GRID_SIZE / 12), game))
 	{
-		game->map->start_y += (GRID_SIZE / 12);
+		game->player->pos.y += (GRID_SIZE / 12);
 		print_grid(game);
 	}
 	return (0);
@@ -36,17 +36,17 @@ int	deal_key_2(int key, t_program *game)
 int	deal_key(int key, t_program *game)
 {
 	if (key == LEFT
-		&& !is_in_bounds(game->map->start_x
-			- (GRID_SIZE / 12), game->map->start_y, game))
+		&& !is_in_bounds(game->player->pos.x
+			- (GRID_SIZE / 12), game->player->pos.y, game))
 	{
-		game->map->start_x -= (GRID_SIZE / 12);
+		game->player->orientation -= ROT_1;
 		print_grid(game);
 	}
 	else if (key == RIGHT
-		&& !is_in_bounds(game->map->start_x
-			+ (GRID_SIZE / 12), game->map->start_y, game))
+		&& !is_in_bounds(game->player->pos.x
+			+ (GRID_SIZE / 12), game->player->pos.y, game))
 	{
-		game->map->start_x += (GRID_SIZE / 12);
+		game->player->orientation += ROT_1;
 		print_grid(game);
 	}
 	deal_key_2(key, game);

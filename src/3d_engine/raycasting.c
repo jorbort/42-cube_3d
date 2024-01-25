@@ -3,36 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:46:24 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/25 01:24:59 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/25 18:37:05 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-void	init_vec(t_program *game)
-{
-	game->player->pos.x = game->map->start_x;
-	game->player->pos.y = game->map->start_y;
-	if (game->map->s_direc == NORTH || game->map->s_direc == SOUTH)
-	{
-		game->player->dir.x = game->player->pos.x;
-		if (game->map->s_direc == NORTH)
-			game->player->dir.y = game->player->pos.y + GRID_SIZE * 3;
-		else
-			game->player->dir.y = game->player->pos.y - GRID_SIZE * 3;
-	}
-	else if (game->map->s_direc == EAST || game->map->s_direc == WEST)
-	{
-		game->player->dir.y = game->player->pos.y;
-		if (game->map->s_direc == WEST)
-			game->player->dir.x = game->player->pos.x + GRID_SIZE * 3;
-		else
-			game->player->dir.x = game->player->pos.x - GRID_SIZE * 3;
-	}
-}
+
 t_vector rotate_vector(t_vector pivot, t_vector v ,double theta)
 {
     double cosTheta = cos(theta);

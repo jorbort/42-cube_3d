@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/25 01:04:36 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/25 19:26:23 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdbool.h>
 
 # define M_PI 3.14159265358979323846264338327950288
+# define ROT_1 0.19635
 
 # define LEFT 0
 # define RIGHT 2
@@ -67,6 +68,7 @@ typedef struct s_player
 {
 	t_vector	pos;
 	t_vector	dir;
+	double		orientation;
 }	t_player;
 typedef struct s_map
 {
@@ -161,6 +163,9 @@ t_vector rotate_vector(t_vector pivot, t_vector vec ,double theta);
 //cast_lines.c
 void loop_caster(t_program *game);
 void draw_line(t_img *img, t_program *game, t_vector start, t_vector end);
+
+//maths
+double	to_degrees(double radians);
 
 
 #endif

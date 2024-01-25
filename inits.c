@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:38:50 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/25 18:05:45 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/01/25 19:53:58 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void	init_vec(t_program *game)
 		game->player->orientation = ((3 * M_PI) / 2);
 	else if (game->map->s_direc == EAST)
 		game->player->orientation = 0;
-	else  if (game->map->s_direc == WEST)
+	else if (game->map->s_direc == WEST)
 		game->player->orientation = M_PI;
 }

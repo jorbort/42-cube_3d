@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/25 19:26:23 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/01/25 19:52:30 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,66 +106,67 @@ typedef struct s_program
 }	t_program;
 
 //inits.c//
-void	init_structs(t_program *game);
-
+void		init_structs(t_program *game);
 //map.c
-void	get_map(t_map *map, char *path);
-void	ft_map_error(int num_error);
-bool	check_map_ext(char *path, char *ext);
-bool	check_map(t_program *game);
-void	parse_map(t_map *map, char *path, t_program *game);
+void		get_map(t_map *map, char *path);
+void		ft_map_error(int num_error);
+bool		check_map_ext(char *path, char *ext);
+bool		check_map(t_program *game);
+void		parse_map(t_map *map, char *path, t_program *game);
 //map_utils.c
-bool	get_rgb(t_map *map, t_data *data);
-void	trim_file(t_map *map);
-int		ft_arrlen(char **s);
+bool		get_rgb(t_map *map, t_data *data);
+void		trim_file(t_map *map);
+int			ft_arrlen(char **s);
 //epurstr
-char	*ft_epurstr(char *str);
+char		*ft_epurstr(char *str);
 //keymaping.c
-int		deal_key(int key, t_program *game);
+int			deal_key(int key, t_program *game);
 //main.c
-int		end_game(t_program *game);
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
-void	print_grid(t_program *game);
+int			end_game(t_program *game);
+void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void		print_grid(t_program *game);
 //utils.c
-void	free_double_arr(char **arr);
-bool	not_valid_char(char c);
-int		ft_strlen_cub(char *s);
-bool	is_invalid(char c);
+void		free_double_arr(char **arr);
+bool		not_valid_char(char c);
+int			ft_strlen_cub(char *s);
+bool		is_invalid(char c);
 //textures_handling.c
-void	get_textures(t_map *map, t_data *data);
+void		get_textures(t_map *map, t_data *data);
 //map_error.c
-void	ft_map_error(int num_error);
-void	print_error(char *str);
+void		ft_map_error(int num_error);
+void		print_error(char *str);
 //map_checks.c
-bool	check_walls(t_map *map);
-int		is_valid_cell(char **mapa, int row, int col);
+bool		check_walls(t_map *map);
+int			is_valid_cell(char **mapa, int row, int col);
 //map_utils2.c
-bool	check_top_bottom(char **map);
-bool	check_sides(char **map);
-void	define_direction(char c, t_map *map);
-char	**ft_arrdup(char **arr);
-bool	is_start_char(char c);
+bool		check_top_bottom(char **map);
+bool		check_sides(char **map);
+void		define_direction(char c, t_map *map);
+char		**ft_arrdup(char **arr);
+bool		is_start_char(char c);
 //calc.c
-int		ft_longest(char **map);
+int			ft_longest(char **map);
 //colision.h
-int		is_in_bounds(int x, int y, t_program *game);
+int			is_in_bounds(int x, int y, t_program *game);
 //rendering_minimap.c
-void	print_grid(t_program *game);
+void		print_grid(t_program *game);
 //rendering_minimap_2.c
-void	draw_filled_circle(void *win, int xc, int yc);
-void	ft_put_2d_walls(t_program *game, t_img *img);
+void		draw_filled_circle(void *win, int xc, int yc);
+void		ft_put_2d_walls(t_program *game, t_img *img);
 //color_floor_cieling.c
-void	color_map(t_program *game, t_img *img);
+void		color_map(t_program *game, t_img *img);
 //raycasting.c
-void	init_vec(t_program *game);
-t_vector rotate_vector(t_vector pivot, t_vector vec ,double theta);
+void		init_vec(t_program *game);
+t_vector	rotate_vector(t_vector pivot, t_vector vec, double theta);
 
 //cast_lines.c
-void loop_caster(t_program *game);
-void draw_line(t_img *img, t_program *game, t_vector start, t_vector end);
+void		loop_caster(t_program *game);
+void		draw_line(t_img *img, t_program *game, t_vector start,
+				t_vector end);
 
 //maths
-double	to_degrees(double radians);
-
+double		to_degrees(double radians);
+//mouse_maping.c
+int			mouse_moving(int x, int y, t_program *game);
 
 #endif

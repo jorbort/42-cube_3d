@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:50:31 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 18:25:50 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/25 19:55:47 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	get_ceiling_floor_color(t_data *data)
 	data->hex_ceil = rgb_2_hex(data->c_rgb[0], data->c_rgb[1], data->c_rgb[2]);
 	data->hex_floor = rgb_2_hex(data->f_rgb[0], data->f_rgb[1], data->f_rgb[2]);
 }
-
 
 void	put_ceil(t_program *game, t_img *img, int *i)
 {

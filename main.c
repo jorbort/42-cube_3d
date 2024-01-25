@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:20 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 18:23:47 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/25 01:06:56 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ void	start_game(t_program *game, char *map_path)
 		game->data->window = mlx_new_window(game->data->mlx,
 			WIN_WIDTH, WIN_HEIGHT, "cub3D");
 		game->map->start_x *= (GRID_SIZE);
-		game->map->start_x +=(GRID_SIZE / 2);
+		game->map->start_x += (GRID_SIZE / 2);
 		game->map->start_y *= (GRID_SIZE);
 		game->map->start_y += (GRID_SIZE / 2);
+		init_vec(game);
 		print_grid(game);
 		mlx_hook(game->data->window, 17, 0, end_game, game);
 		mlx_key_hook(game->data->window, deal_key, game);

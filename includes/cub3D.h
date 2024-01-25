@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 19:11:32 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/25 01:04:36 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@
 # include <stdio.h>
 # include <stdbool.h>
 
+# define M_PI 3.14159265358979323846264338327950288
+
 # define LEFT 0
 # define RIGHT 2
 # define DOWN 1
 # define UP 13
 # define ESC 53
-# define GRID_SIZE 12
+# define GRID_SIZE 32
 # define WIN_WIDTH 1300
 # define WIN_HEIGHT 1000
 
@@ -55,19 +57,17 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
-typedef struct s_vec
+typedef struct s_vector
 {
-	double	player_x;
-	double	player_y;
-	double	dir_x;
-	double	dir_y;
-	double	plane_left_x;
-	double	plane_left_y;
-	double	plane_right_x;
-	double	plane_right_y;
-	double	fr_time;
-	double	prev_fr_time;
-}	t_vec;
+	int	x;
+	int	y;
+}	t_vector;
+
+typedef struct s_player
+{
+	t_vector	pos;
+	t_vector	dir;
+}	t_player;
 typedef struct s_map
 {
 	char	**map;
@@ -98,7 +98,7 @@ typedef struct s_program
 {
 	t_data		*data;
 	t_map		*map;
-	t_vec		*vector;
+	t_player	*player;
 	t_img		*img;
 
 }	t_program;
@@ -124,7 +124,6 @@ int		deal_key(int key, t_program *game);
 int		end_game(t_program *game);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	print_grid(t_program *game);
-
 //utils.c
 void	free_double_arr(char **arr);
 bool	not_valid_char(char c);
@@ -155,4 +154,13 @@ void	draw_filled_circle(void *win, int xc, int yc);
 void	ft_put_2d_walls(t_program *game, t_img *img);
 //color_floor_cieling.c
 void	color_map(t_program *game, t_img *img);
+//raycasting.c
+void	init_vec(t_program *game);
+t_vector rotate_vector(t_vector pivot, t_vector vec ,double theta);
+
+//cast_lines.c
+void loop_caster(t_program *game);
+void draw_line(t_img *img, t_program *game, t_vector start, t_vector end);
+
+
 #endif

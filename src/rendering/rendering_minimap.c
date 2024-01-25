@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_minimap.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:49:41 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 19:40:01 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/25 01:10:53 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,11 @@ void	print_grid(t_program *game)
 	img.img = mlx_new_image(game->data->mlx, 1210, 1010);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
-	color_map(game, &img);
-	//put_grid_2_img(&img, game->map->map);
+	game->img = &img;
+	//color_map(game, &img);
+	put_grid_2_img(&img, game->map->map);
 	ft_put_2d_walls(game, &img);
 	draw_filled_circle(&img, game->map->start_x, game->map->start_y);
+	loop_caster(game);
 	mlx_put_image_to_window(game->data->mlx, game->data->window, img.img, 0, 0);
 }

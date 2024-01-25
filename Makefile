@@ -5,7 +5,9 @@ SRC= main.c inits.c   key_maping.c \
 	src/parsing/ft_epurstr.c src/parsing/map_utils.c src/parsing/map_error.c src/parsing/map.c src/parsing/textures_handling.c src/parsing/map_checks.c src/parsing/map_utils_2.c \
 	src/calculations/calc.c src/calculations/colision.c \
 	src/rendering/rendering_minimap.c src/rendering/rendering_minimap_2.c src/rendering/color_floor_cieling.c \
-	
+	src/rendering/cast_lines.c \
+	src/3d_engine/raycasting.c \
+
 CC = gcc
 MLX_PATH = mlx/
 MLX_LIB = $(MLX_PATH)libmlx.a
@@ -27,18 +29,15 @@ subsystems:
 $(NAME): $(OBJECTS)
 	gcc $(FLAGS) $(MLX_FLAGS) $(OBJECTS) $(MLX_LIB) $(LIBFT_LIB) -o $(NAME) 
 
-clean : 
+clean :
 	make -C $(MLX_PATH) clean
 	make -C $(LIBFT_PATH) clean
-	rm -f *.o
 
 git : fclean
 	@read -p "Enter commit message: " commit_message; \
     git add *; \
     git commit -m "$$commit_message"
 	git push
-
-
 
 fclean : clean
 	make -C $(MLX_PATH) clean

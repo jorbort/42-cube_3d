@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:46:24 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/23 19:19:23 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/25 01:24:59 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,33 @@
 
 void	init_vec(t_program *game)
 {
-	game->vector->player_x = game->map->start_x;
-	game->vector->player_y = game->map->start_y;
-	game->vector->dir_x = 0;
-	game->vector->dir_y = 1;
-	game->vector->plane_right_x = 0;
-	game->vector->plane_right_y = 0.66;
-	game->vector->fr_time = 0;
-	game->vector->prev_fr_time = 0;
-
-}
-
-void	cast_ray(t_program *game)
-{
-	double	camera_x;
-	double	ray_dir_x;
-	double	ray_dir_y;
-	int		x;
-	int		w;
-
-	w = ft_longest(game->map->map);
-	while (x < w)
+	game->player->pos.x = game->map->start_x;
+	game->player->pos.y = game->map->start_y;
+	if (game->map->s_direc == NORTH || game->map->s_direc == SOUTH)
 	{
-		camera_x = 2 * x / (double)w - 1;
-		ray_dir_x = game->vector->dir_x + game->vector->plane_right_x * camera_x;
-		ray_dir_y = game->vector->dir_y + game->vector->plane_right_y * camera_x;
+		game->player->dir.x = game->player->pos.x;
+		if (game->map->s_direc == NORTH)
+			game->player->dir.y = game->player->pos.y + GRID_SIZE * 3;
+		else
+			game->player->dir.y = game->player->pos.y - GRID_SIZE * 3;
 	}
+	else if (game->map->s_direc == EAST || game->map->s_direc == WEST)
+	{
+		game->player->dir.y = game->player->pos.y;
+		if (game->map->s_direc == WEST)
+			game->player->dir.x = game->player->pos.x + GRID_SIZE * 3;
+		else
+			game->player->dir.x = game->player->pos.x - GRID_SIZE * 3;
+	}
+}
+t_vector rotate_vector(t_vector pivot, t_vector v ,double theta)
+{
+    double cosTheta = cos(theta);
+    double sinTheta = sin(theta);
 
+    double newX = (v.x - pivot.x) * cosTheta - (v.y - pivot.y) * sinTheta + pivot.x;
+    double newY = (v.x - pivot.x) * sinTheta + (v.y - pivot.y) * cosTheta + pivot.y;
+
+    t_vector rotatedVector = {newX, newY};
+    return (rotatedVector);
 }

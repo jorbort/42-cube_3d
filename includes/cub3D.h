@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/29 01:04:38 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/29 13:58:32 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef enum s_direc
 	WEST,
 	EAST
 }	t_direc;
-
 typedef struct s_img
 {
 	void	*img;
@@ -163,11 +162,10 @@ void		init_vec(t_program *game);
 //t_vector	rotate_vector(t_vector pivot, t_vector vec, double theta);
 t_vector	rotate_vector(t_vector A, t_vector pivot, float theta);
 void		move_along_angle(t_program *game, double theta, int distance);
-
 //cast_lines.c
 void		loop_caster(t_program *game);
-void		draw_line(t_img *img, t_program *game, t_vector start, t_vector end);
-
+void		draw_line(t_img *img, t_program *game, t_vector start,
+				t_vector end);
 //maths
 double		to_degrees(double radians);
 //mouse_maping.c

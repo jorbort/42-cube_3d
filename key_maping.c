@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 20:25:16 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/29 13:32:30 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:52:33 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	deal_key_3(int key, t_program *game)
 		move_along_angle(game, game->player->orientation + M_PI, 8);
 	}
 	print_grid(game);
+	return (0);
 }
 
 int	deal_key_2(int key, t_program *game)

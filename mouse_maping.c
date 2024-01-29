@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:48:43 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/29 13:26:17 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:53:13 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	mouse_moving_2(int x, int y, t_program *game, int *prev_x)
 {
+	(void)y;
 	if (x > (WIN_WIDTH / 2) + 200 && x > *prev_x + 20)
 	{
 		*prev_x = x;
@@ -29,6 +30,7 @@ int	mouse_moving_2(int x, int y, t_program *game, int *prev_x)
 				game->player->pos, ROT_1);
 	}
 	print_grid(game);
+	return (0);
 }
 
 int	mouse_moving(int x, int y, t_program *game)

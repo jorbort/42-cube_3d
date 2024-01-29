@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_minimap_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:55:14 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 19:37:06 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/29 17:21:35 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include <cub3D.h>
 
 void	fill_square(int i, int j, t_img *img)
 {

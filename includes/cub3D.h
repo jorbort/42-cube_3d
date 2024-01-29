@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/29 13:58:32 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:47:00 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int			ft_arrlen(char **s);
 char		*ft_epurstr(char *str);
 //keymaping.c
 int			deal_key(int key, t_program *game);
+int			deal_key_2(int key, t_program *game);
 //main.c
 int			end_game(t_program *game);
 void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
@@ -136,7 +137,7 @@ void		get_textures(t_map *map, t_data *data);
 //map_error.c
 void		ft_map_error(int num_error);
 void		print_error(char *str);
-//map_checks.c
+//map_checks.c       
 bool		check_walls(t_map *map);
 int			is_valid_cell(char **mapa, int row, int col);
 //map_utils2.c
@@ -159,13 +160,13 @@ void		ft_put_2d_walls(t_program *game, t_img *img);
 void		color_map(t_program *game, t_img *img);
 //raycasting.c
 void		init_vec(t_program *game);
-//t_vector	rotate_vector(t_vector pivot, t_vector vec, double theta);
+////raycasting.c
+void		circle_control(t_program *game, double theta);
 t_vector	rotate_vector(t_vector A, t_vector pivot, float theta);
 void		move_along_angle(t_program *game, double theta, int distance);
 //cast_lines.c
 void		loop_caster(t_program *game);
-void		draw_line(t_img *img, t_program *game, t_vector start,
-				t_vector end);
+void		draw_line(t_img *img, t_program *game, t_vector start, t_vector end);
 //maths
 double		to_degrees(double radians);
 //mouse_maping.c

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_epurstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:20:47 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/20 13:10:31 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/29 17:21:03 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include <cub3D.h>
 
 void	get_epured(char *str, char *res)
 {

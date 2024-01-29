@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_checks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:16:31 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/24 16:26:39 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/29 17:21:05 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include <cub3D.h>
 
 int	is_valid_cell(char **mapa, int row, int col)
 {

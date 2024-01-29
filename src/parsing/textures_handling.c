@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   textures_handling.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:33:59 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/20 13:11:09 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/29 17:21:22 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include <cub3D.h>
 
 void	get_textures(t_map *map, t_data *data)
 {

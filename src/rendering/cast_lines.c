@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cast_lines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 23:40:14 by juanantonio       #+#    #+#             */
-/*   Updated: 2024/01/27 12:12:56 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/29 18:09:06 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include <cub3D.h>
 
 void draw_line(t_img *img, t_program *game, t_vector start, t_vector end)
 {
@@ -32,7 +32,7 @@ void draw_line(t_img *img, t_program *game, t_vector start, t_vector end)
     int i = 0;
     while (i <= steps)
 	{
-        my_mlx_pixel_put(img, x, y, 0x0000FFFF);
+        my_mlx_pixel_put(img,round(x), round(y), 0x0000FFFF);
         x += x_increment;
         y += y_increment;
 	i++;

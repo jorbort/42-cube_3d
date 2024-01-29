@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:15:16 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/22 16:10:49 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/29 17:21:12 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include <cub3D.h>
 
 bool	is_start_char(char c)
 {

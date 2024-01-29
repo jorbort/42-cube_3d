@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_minimap.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:49:41 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/29 13:34:12 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/29 17:21:39 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include <cub3D.h>
 
 void	put_vertical_lines_2_img(t_img *img, char **game_map)
 {

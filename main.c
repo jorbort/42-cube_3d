@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:20 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/29 12:37:56 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:01:36 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3D.h"
+#include "cub3D.h"
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
@@ -45,8 +45,8 @@ void	start_game(t_program *game, char *map_path)
 		print_grid(game);
 		mlx_hook(game->data->window, 17, 0, end_game, game);
 		mlx_hook(game->data->window, 3, 1L << 1, deal_key, game);
-		mlx_hook(game->data->window, 2, 1L << 0, deal_key, game);
-		mlx_hook(game->data->window, 6, 1L << 7, mouse_moving, game);
+		mlx_hook(game->data->window, 2, 1L << 0, deal_key_2, game);
+		//mlx_hook(game->data->window, 6, 1L << 7, mouse_moving, game);
 		mlx_loop(game->data->mlx);
 	}
 }

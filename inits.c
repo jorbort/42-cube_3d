@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:38:50 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/28 23:13:19 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/29 13:32:08 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	init_vec(t_program *game)
 	{
 		game->player->dir.x -= GRID_SIZE;
 		game->player->orientation = M_PI;
-	}	
+	}
 	else if (game->map->s_direc == NORTH)
 	{
 		game->player->dir.y += GRID_SIZE;
@@ -54,4 +54,3 @@ void	init_vec(t_program *game)
 		game->player->orientation = ((3 * M_PI) / 2);
 	}
 }
-

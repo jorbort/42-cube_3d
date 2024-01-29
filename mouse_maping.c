@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_maping.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 17:48:43 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/25 20:08:53 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/29 00:40:29 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 
 int	mouse_moving(int x, int y, t_program *game)
 {
-	if (x < (WIN_WIDTH / 2) + 600
-		&& !is_in_bounds(game->map->start_x
-			- (GRID_SIZE / 12), game->map->start_y, game))
+	(void) y;
+	if (x < (WIN_WIDTH / 2) + 600)
 	{
 		game->player->orientation -= ROT_1;
 		print_grid(game);
 	}
-	else if (x > (WIN_WIDTH / 2) - 600
-		&& !is_in_bounds(game->map->start_x
-			- (GRID_SIZE / 12), game->map->start_y, game))
+	else if (x > (WIN_WIDTH / 2) - 600)
 	{
 		game->player->orientation += ROT_1;
 		print_grid(game);

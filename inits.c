@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:38:50 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/25 19:53:58 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/28 23:13:19 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,27 @@ void	init_vec(t_program *game)
 {
 	game->player->pos.x = game->map->start_x;
 	game->player->pos.y = game->map->start_y;
-	if (game->map->s_direc == NORTH)
-		game->player->orientation = M_PI / 2;
-	else if (game->map->s_direc == SOUTH)
-		game->player->orientation = ((3 * M_PI) / 2);
-	else if (game->map->s_direc == EAST)
-		game->player->orientation = 0;
+	game->player->dir.x = game->map->start_x;
+	game->player->dir.y = game->map->start_y;
+	if (game->map->s_direc == EAST)
+	{
+		game->player->dir.x += GRID_SIZE;
+		game->player->orientation = M_PI * 2;
+	}
 	else if (game->map->s_direc == WEST)
+	{
+		game->player->dir.x -= GRID_SIZE;
 		game->player->orientation = M_PI;
+	}	
+	else if (game->map->s_direc == NORTH)
+	{
+		game->player->dir.y += GRID_SIZE;
+		game->player->orientation = M_PI / 2;
+	}
+	else if (game->map->s_direc == SOUTH)
+	{
+		game->player->dir.y -= GRID_SIZE;
+		game->player->orientation = ((3 * M_PI) / 2);
+	}
 }
+

@@ -3,16 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   textures_handling.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:33:59 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/29 17:21:22 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/30 18:03:00 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	get_textures(t_map *map, t_data *data)
+void	check_valid_path(t_data *data)
+{
+	int	fd[4];
+	int	i;
+
+	i = 0;
+	fd[0] = open(data->e_texture, O_RDONLY);
+	fd[1] = open(data->n_texture, O_RDONLY);
+	fd[2] = open(data->w_texture, O_RDONLY);
+	fd[3] = open(data->s_texture, O_RDONLY);
+	while (i < 4)
+	{
+		if (fd[i] < 0)
+		{
+			while (i > 0)
+			{
+				close(fd[i--]);
+			}
+			ft_map_error(1);
+		}
+	}
+	while (i > 0)
+		close (fd[i--]);
+}
+
+void	get_sprites_pointers(t_sprites *sprites, t_data *data)
+{
+	int	size;
+
+	size = GRID_SIZE;
+	check_valid_path(data);
+	sprites->es_sprite = mlx_xpm_file_to_image(data->mlx,
+			data->e_texture, &size, &size);
+	sprites->no_sprite = mlx_xpm_file_to_image(data->mlx,
+			data->e_texture, &size, &size);
+	sprites->so_sprite = mlx_xpm_file_to_image(data->mlx,
+			data->e_texture, &size, &size);
+	sprites->we_sprite = mlx_xpm_file_to_image(data->mlx,
+			data->e_texture, &size, &size);
+}
+
+void	get_textures(t_map *map, t_data *data, t_program *game)
 {
 	int	i;
 
@@ -29,4 +70,5 @@ void	get_textures(t_map *map, t_data *data)
 			data->e_texture = ft_strdup(ft_strchr(map->map[i], ' ') + 1);
 		i++;
 	}
+	get_sprites_pointers(game->sprites, game->data);
 }

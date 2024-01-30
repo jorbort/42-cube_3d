@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:38:50 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/30 00:21:51 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/30 18:11:42 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,18 @@ void	init_structs(t_program *game)
 	t_map	*new_m;
 
 	new_d = malloc(sizeof(t_data));
+	if (!new_d)
+		ft_map_error(7);
 	new_d->mlx = NULL;
 	new_d->window = NULL;
 	game->data = new_d;
 	new_m = malloc(sizeof(t_map));
-	new_m->s_direc = NONE;
+	if (!new_m)
+		ft_map_error(7);
 	game->map = new_m;
 	game->player = malloc(sizeof(t_player));
+	if (!game->player)
+		ft_map_error(7);
 }
 
 void	init_vec(t_program *game)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/29 23:42:24 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/30 17:34:20 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,21 @@ typedef struct s_data
 	char	*e_texture;
 }	t_data;
 
+
+typedef struct s_sprites
+{
+	void	*no_sprite;
+	void	*so_sprite;
+	void	*we_sprite;
+	void	*es_sprite;
+}	t_sprites;
 typedef struct s_program
 {
 	t_data		*data;
 	t_map		*map;
 	t_player	*player;
 	t_img		*img;
-
+	t_sprites	*sprites;
 }	t_program;
 
 //inits.c//
@@ -133,7 +141,7 @@ bool		not_valid_char(char c);
 int			ft_strlen_cub(char *s);
 bool		is_invalid(char c);
 //textures_handling.c
-void		get_textures(t_map *map, t_data *data);
+void		get_textures(t_map *map, t_data *data, t_program *game);
 //map_error.c
 void		ft_map_error(int num_error);
 void		print_error(char *str);

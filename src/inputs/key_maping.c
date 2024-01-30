@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_maping.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 20:25:16 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/30 00:07:45 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/30 17:05:52 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

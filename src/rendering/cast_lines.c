@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_lines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 23:40:14 by juanantonio       #+#    #+#             */
-/*   Updated: 2024/01/30 01:09:53 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/30 18:03:52 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,47 +41,34 @@ void draw_line(t_img *img, t_program *game, t_vector start, t_vector end)
 
 void loop_caster(t_program *game)
 {
-	//double i;
-//	double increments;
-	//double theta;
-//	t_vector vec;
-
-	// i = (M_PI / 180) * (to_degrees(game->player->orientation) + 45);
-	// increments = (M_PI / 180) * 60 / WIN_WIDTH;
-	// while (i > (M_PI / 180) * (to_degrees(game->player->orientation) - 45))
-	// {
-		//vec = rotate_vector(game->player->pos, game->player->dir, i);
 	t_player	play;
 	t_vector	A;
-	t_vector	C;
-	t_vector	D,H,J;
+	// t_vector	C;
+	// t_vector	D;
 	int			ya;
 	double		xa;
 
 	play = *game->player;
 	if (play.orientation >= 0 && play.orientation <= M_PI)
 	{
-		A.y = floor(play.pos.y / GRID_SIZE) * GRID_SIZE - 1;
-		ya = - GRID_SIZE;
-	}
-	else
-	{
 		A.y = floor(play.pos.y / GRID_SIZE) * GRID_SIZE + GRID_SIZE;
 		ya = GRID_SIZE;
 	}
+	else
+	{
+		A.y = floor(play.pos.y / GRID_SIZE) * GRID_SIZE - 1;
+		ya = - GRID_SIZE;
+	}
 	A.x = play.pos.x + (play.pos.y - A.y)/tan(play.orientation);
 	xa = GRID_SIZE / tan(play.orientation);
-	C.x = A.x + xa;
-	C.y = A.y + ya;
-	D.x = C.x + xa;
-	D.y = C.y + ya;
-	H.x = D.x + xa;
-	H.y = D.y + ya;
-	J.x = H.x + xa;
-	J.y = H.y + ya;
-	draw_line(game->img, game, game->player->pos, D);
-	//	i = i - increments;
-	// }
+	// C.x = A.x + xa;
+	// C.y = A.y + ya;
+	while (game->map->map[A.y / GRID_SIZE][A.x / GRID_SIZE] != '1')
+	{
+		A.x = A.x + xa;
+		A.y = A.y + ya;
+	}
+	draw_line(game->img, game, game->player->pos, A);
 	t_vector	B;
 
 	if (play.orientation <= (3 * M_PI) / 2 && play.orientation >= M_PI / 2)
@@ -96,9 +83,7 @@ void loop_caster(t_program *game)
 	}
 	B.y = play.pos.y + (play.pos.x - B.x) * tan(play.orientation);
 	ya = GRID_SIZE * tan(play.orientation);
-	//	draw_line(game->img, game, game->player->pos, B);
-
-
+	//     draw_line(game->img, game, game->player->pos, B);
 }
 
 double	to_degrees(double radians)

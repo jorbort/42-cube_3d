@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:38:50 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/30 18:11:42 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:46:49 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	init_structs(t_program *game)
 	new_m = malloc(sizeof(t_map));
 	if (!new_m)
 		ft_map_error(7);
+	game->map->s_direc = NONE;
 	game->map = new_m;
 	game->player = malloc(sizeof(t_player));
 	if (!game->player)

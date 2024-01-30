@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_minimap_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:55:14 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/29 17:21:35 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/30 00:03:01 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_put_2d_walls(t_program *game, t_img *img)
 	}
 }
 
-void	draw_horisontal_lines(void *win, int xc, int yc, int y)
+void	draw_horizontal_lines(void *win, int xc, int yc, int y)
 {
 	int	radius;
 	int	i;
@@ -94,7 +94,7 @@ void	draw_filled_circle(void *win, int xc, int yc)
 	radius = 2;
 	while (radius >= y)
 	{
-		draw_horisontal_lines(win, xc, yc, y);
+		draw_horizontal_lines(win, xc, yc, y);
 		draw_cuadrant_lines(win, xc, yc, y);
 		if (err <= 0)
 		{

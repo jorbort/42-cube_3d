@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/29 18:47:00 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/29 23:42:24 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ bool		is_start_char(char c);
 int			ft_longest(char **map);
 //colision.h
 int			is_in_bounds(t_vector test, t_program *game);
-t_vector	test_move_along_angle(t_program *game, double theta, int distance);
+int			test_move_along_angle(t_program *game, double theta, int distance);
 //rendering_minimap.c
 void		print_grid(t_program *game);
 //rendering_minimap_2.c
@@ -166,9 +166,11 @@ t_vector	rotate_vector(t_vector A, t_vector pivot, float theta);
 void		move_along_angle(t_program *game, double theta, int distance);
 //cast_lines.c
 void		loop_caster(t_program *game);
-void		draw_line(t_img *img, t_program *game, t_vector start, t_vector end);
+void		draw_line(t_img *img, t_program *game, t_vector start, \
+			t_vector end);
 //maths
 double		to_degrees(double radians);
+double		to_radians(int degrees);
 //mouse_maping.c
 int			mouse_moving(int x, int y, t_program *game);
 

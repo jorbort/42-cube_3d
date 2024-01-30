@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_maping.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 20:25:16 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/29 19:26:25 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/01/30 00:07:45 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int	deal_key_3(int key, t_program *game)
 {
-	if (key == RIGHT
-		&& !is_in_bounds(test_move_along_angle(game,
-				game->player->orientation, GRID_SIZE), game))
+	double	ori;
+
+	ori = game->player->orientation;
+	if (key == RIGHT && !test_move_along_angle(game, ori, GRID_SIZE / 2))
 	{
-		move_along_angle(game, game->player->orientation, 8);
+		move_along_angle(game, ori, GRID_SIZE / 4);
 	}
-	else if (key == LEFT
-		&& !is_in_bounds(test_move_along_angle(game,
-				game->player->orientation + M_PI, GRID_SIZE), game))
+	else if (key == LEFT && !test_move_along_angle \
+		(game, ori + M_PI, GRID_SIZE / 2))
 	{
-		move_along_angle(game, game->player->orientation + M_PI, 8);
+		move_along_angle(game, ori + M_PI, GRID_SIZE / 4);
 	}
 	print_grid(game);
 	return (0);
@@ -32,19 +32,20 @@ int	deal_key_3(int key, t_program *game)
 
 int	deal_key_2(int key, t_program *game)
 {
+	double	ori;
+
+	ori = game->player->orientation;
 	if (key == ESC)
 		end_game(game);
-	else if (key == UP
-		&& !is_in_bounds(test_move_along_angle(game,
-				game->player->orientation + (M_PI / 2), GRID_SIZE), game))
+	else if (key == UP && !test_move_along_angle \
+		(game, ori + (M_PI / 2), GRID_SIZE / 2))
 	{
-		move_along_angle(game, game->player->orientation + (M_PI / 2), 8);
+		move_along_angle(game, ori + (M_PI / 2), GRID_SIZE / 4);
 	}
-	else if (key == DOWN
-		&& !is_in_bounds(test_move_along_angle(game,
-				game->player->orientation + ((3 * M_PI) / 2), GRID_SIZE), game))
+	else if (key == DOWN && !test_move_along_angle \
+		(game, ori + ((3 * M_PI) / 2), GRID_SIZE / 2))
 	{
-		move_along_angle(game, game->player->orientation + ((3 * M_PI) / 2), 8);
+		move_along_angle(game, ori + ((3 * M_PI) / 2), GRID_SIZE / 4);
 	}
 	deal_key_3(key, game);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:38:50 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/30 19:46:49 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/30 23:19:51 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	init_structs(t_program *game)
 	new_m = malloc(sizeof(t_map));
 	if (!new_m)
 		ft_map_error(7);
-	game->map->s_direc = NONE;
 	game->map = new_m;
+	game->map->s_direc = NONE;
 	game->player = malloc(sizeof(t_player));
 	if (!game->player)
 		ft_map_error(7);

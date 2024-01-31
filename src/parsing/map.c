@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:08:25 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/30 19:47:59 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/01/30 23:21:46 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,6 @@ void	parse_map(t_map *map, char *path, t_program *game)
 		map->map[i] = ft_epurstr(map->map[i]);
 	check_identifiers(map);
 	get_rgb(map, game->data);
-	get_textures(map, game->data, game);
+	//get_textures(map, game->data, game);
 	trim_file(map);
 }

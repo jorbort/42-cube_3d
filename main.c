@@ -6,7 +6,7 @@
 /*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:20 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/30 16:50:46 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:33:07 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	start_game(t_program *game, char *map_path)
 		mlx_hook(game->data->window, 17, 0, end_game, game);
 		mlx_hook(game->data->window, 3, 1L << 1, deal_key, game);
 		mlx_hook(game->data->window, 2, 1L << 0, deal_key_2, game);
-		mlx_hook(game->data->window, 6, 1L << 7, mouse_moving, game);
+		//mlx_hook(game->data->window, 6, 1L << 7, mouse_moving, game);
 		mlx_loop(game->data->mlx);
 	}
 }

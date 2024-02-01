@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_lines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 23:40:14 by juanantonio       #+#    #+#             */
-/*   Updated: 2024/02/01 01:55:50 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/02/01 18:09:54 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,53 +41,7 @@ void draw_line(t_img *img, t_program *game, t_vector start, t_vector end)
     }
 }
 
-// void loop_caster(t_program *game)
-// {
-// 	t_player	play;
-// 	t_vector	A;
-// 	//t_vector 	new;
-// 	// t_vector	C;
-// 	int			ya;
-// 	double		xa;
-
-// 	play = *game->player;
-// 	if (play.orientation >= 0 && play.orientation <= M_PI)
-// 	{
-// 		A.y = floor(play.pos.y / GRID_SIZE);
-// 		A.y *= (GRID_SIZE + GRID_SIZE);
-// 		ya = -GRID_SIZE;
-// 	}
-// 	else
-// 	{
-// 		A.y = floor(play.pos.y / GRID_SIZE);
-// 		A.y *= (GRID_SIZE - 1);
-// 		ya = GRID_SIZE;
-// 		play.orientation = play.orientation + M_PI;
-// 	}
-// 	A.x = play.pos.x + (play.pos.y - A.y) / tan(play.orientation);
-// 	xa = (GRID_SIZE / tan(play.orientation));
-// 	if (A.x / GRID_SIZE > game->map->width - 1 || A.y / GRID_SIZE > game->map->height - 2 || A.x / GRID_SIZE < 0 || A.y / GRID_SIZE < 0)
-// 		return ;
-// 	int strlen = ft_strlen(game->map->map[A.y /GRID_SIZE]);
-// 	while (strlen > A.x / GRID_SIZE && game->map->map[A.y / GRID_SIZE][A.x / GRID_SIZE] != '1')
-// 	{
-// 		A.x = A.x + xa;
-// 		A.y = A.y - ya;
-// 		strlen = ft_strlen(game->map->map[A.y /GRID_SIZE]);
-// 		if (A.x / GRID_SIZE < game->map->width - 1 && A.y / GRID_SIZE < game->map->height - 2 && A.x / GRID_SIZE > 0 && A.y / GRID_SIZE > 0)
-// 		{
-// 			if (strlen > A.x / GRID_SIZE )
-// 			{
-// 				draw_line(game->img, game, game->player->pos, A);
-// 				printf("%f x %f y \n", floor(A.x / GRID_SIZE), floor(A.y / GRID_SIZE));
-// 			}	//new = A;
-// 		}
-// 		if (A.x / GRID_SIZE > game->map->width - 1 || A.y / GRID_SIZE > game->map->height - 2 || A.x / GRID_SIZE < 0 || A.y / GRID_SIZE < 0)
-// 		 	break ;
-// 	}
-// }
-
-float nor_angle(float angle)
+float	control_angle(float angle)
 {
 	if (angle < 0)
 		angle += (2 * M_PI);
@@ -147,7 +101,6 @@ int wall_hit(float x, float y, t_program *game) // check the wall hit
 		return (1);
 	if (game->map->map[y_m] && x_m < (int)ft_strlen(game->map->map[y_m]))
 	{
-		printf("%li x %li y \n",x_m, y_m );
 		if (game->map->map[y_m][x_m] == '1')
 			return (3);
 	}
@@ -216,13 +169,13 @@ void loop_caster(t_program *game)
 	int		rayito;
 
 	rayito = 0;
-	game->rays->r_angle = game->player->orientation - (to_radians(360) / 2);
+	game->rays->r_angle = game->player->orientation - (game->player->fov / 2);
 	while (rayito < WIN_WIDTH)
 	{
 		game->rays->flag = 0;
 		game->rays->hit = 0;
-		hori_intersec = get_h_inter(game, nor_angle(game->rays->r_angle));
-		vert_intersec = get_v_inter(game , nor_angle(game->rays->r_angle));
+		hori_intersec = get_h_inter(game, control_angle(game->rays->r_angle));
+		vert_intersec = get_v_inter(game, control_angle(game->rays->r_angle));
 		if (vert_intersec <= hori_intersec)
 		{
 			game->rays->r_length = vert_intersec;
@@ -232,21 +185,21 @@ void loop_caster(t_program *game)
 			game->rays->r_length = hori_intersec;
 			game->rays->flag = 1;
 		}
-			if (game->rays->end_point_y.x < WIN_WIDTH && game->rays->end_point_y.y < WIN_HEIGHT && 
-				game->rays->end_point_y.x >= 0 && game->rays->end_point_y.y >= 0)
-			{
-				if (vert_intersec <= hori_intersec)
-					draw_line(game->img, game, game->player->pos, game->rays->end_point_y);
-			}	
-			if (game->rays->end_point_x.x < WIN_WIDTH && game->rays->end_point_x.y < WIN_HEIGHT && 
-				game->rays->end_point_x.x >= 0 && game->rays->end_point_x.y >= 0)
-			{
-				if (vert_intersec > hori_intersec)
-					draw_line(game->img, game, game->player->pos, game->rays->end_point_x);
-			}	
-	//render_wall(mlx, ray);
-	rayito++;
-	game->rays->r_angle += (to_radians(360) / WIN_WIDTH);
+		if (game->rays->end_point_y.x < WIN_WIDTH && game->rays->end_point_y.y < WIN_HEIGHT && 
+			game->rays->end_point_y.x >= 0 && game->rays->end_point_y.y >= 0)
+		{
+			if (vert_intersec <= hori_intersec)
+				draw_line(game->img, game, game->player->pos, game->rays->end_point_y);
+		}	
+		if (game->rays->end_point_x.x < WIN_WIDTH && game->rays->end_point_x.y < WIN_HEIGHT && 
+			game->rays->end_point_x.x >= 0 && game->rays->end_point_x.y >= 0)
+		{
+			if (vert_intersec > hori_intersec)
+				draw_line(game->img, game, game->player->pos, game->rays->end_point_x);
+		}
+		//render_wall(mlx, ray);
+		rayito++;
+		game->rays->r_angle += (game->player->fov / WIN_WIDTH);
 	}
 }
 

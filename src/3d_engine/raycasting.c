@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:46:24 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/30 00:01:18 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/02/01 18:16:00 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ t_vector	rotate_vector(t_vector A, t_vector pivot, float theta)
 {
 	t_vector	res;
 
-	theta *= -1;
+	//theta *= -1;
 	res.x = round((A.x - pivot.x) * cos(theta) - (A.y - pivot.y) \
 		* sin(theta) + pivot.x);
 	res.y = round((A.x - pivot.x) * sin(theta) + (A.y - pivot.y) \
 		* cos(theta) + pivot.y);
+	
 	return (res);
 }
 
@@ -30,13 +31,12 @@ void	move_along_angle(t_program *game, double theta, int distance)
 {
 	int	x;
 	int	y;
-
 	x = distance * cos(theta);
 	y = distance * sin(theta);
-	game->player->pos.y += x;
-	game->player->pos.x += y;
-	game->player->dir.y += x;
-	game->player->dir.x += y;
+	game->player->pos.y += y;
+	game->player->pos.x += x;
+	game->player->dir.y += y;
+	game->player->dir.x += x;
 	return ;
 }
 

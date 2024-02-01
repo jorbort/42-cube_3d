@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/01 01:33:14 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/02/01 18:17:02 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define L_ARROW 123
 # define R_ARROW 124
 # define ESC 53
-# define GRID_SIZE 32
+# define GRID_SIZE 8
 # define WIN_WIDTH 1300
 # define WIN_HEIGHT 1000
 

@@ -6,7 +6,7 @@
 /*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:38:50 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/30 23:19:51 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/02/01 01:34:19 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ void	init_structs(t_program *game)
 	game->player = malloc(sizeof(t_player));
 	if (!game->player)
 		ft_map_error(7);
+	game->rays = malloc(sizeof(t_rays));
+	game->rays->hit = 0;
+	if (!game->rays)
+		ft_map_error(7);
 }
 
 void	init_vec(t_program *game)
@@ -39,6 +43,7 @@ void	init_vec(t_program *game)
 	game->player->pos.y = game->map->start_y;
 	game->player->dir.x = game->map->start_x;
 	game->player->dir.y = game->map->start_y;
+	game->player->fov = (FOV * M_PI) / 180;
 	if (game->map->s_direc == EAST)
 	{
 		game->player->dir.x -= GRID_SIZE;

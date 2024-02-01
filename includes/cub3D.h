@@ -6,7 +6,7 @@
 /*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/30 23:14:40 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/02/01 01:33:14 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 # define M_PI 3.14159265358979323846264338327950288
 # define ROT_1 0.196349540849362
+# define FOV 60
 
 # define LEFT 0
 # define RIGHT 2
@@ -70,6 +71,7 @@ typedef struct s_player
 	t_vector	pos;
 	t_vector	dir;
 	double		orientation;
+	double		fov;
 }	t_player;
 typedef struct s_map
 {
@@ -97,6 +99,15 @@ typedef struct s_data
 	char	*e_texture;
 }	t_data;
 
+typedef struct s_rays
+{
+	double		r_angle;
+	double		r_length;
+	t_vector	end_point_x;
+	t_vector	end_point_y;
+	bool		flag;
+	bool		hit;
+}	t_rays;
 
 typedef struct s_sprites
 {
@@ -113,6 +124,7 @@ typedef struct s_program
 	t_player	*player;
 	t_img		*img;
 	t_sprites	*sprites;
+	t_rays		*rays;
 }	t_program;
 
 //inits.c//

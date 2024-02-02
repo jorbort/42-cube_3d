@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cast_lines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-anm <juan-anm@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 23:40:14 by juanantonio       #+#    #+#             */
-/*   Updated: 2024/02/02 17:23:57 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/02/02 19:16:31 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
+
 float	control_angle(float angle)
 {
 	if (angle < 0)
@@ -19,31 +20,6 @@ float	control_angle(float angle)
 		angle -= (2 * M_PI);
 	return (angle);
 }
-
-void draw_wall(t_program *game, int ray, int t_pix, int b_pix) // draw the wall
-{
-	while (t_pix < b_pix)
-		my_mlx_pixel_put(game->img, ray, t_pix++, 0x0000FF);
-}
-void render_wall(t_program *game, int ray) // render the wall
-{
- double wall_h;
- double b_pix;
- double t_pix;
-
-//game->rays->r_length *= cos(control_angle(game->rays->r_angle - game->player->orientation)); // fix the fisheye
- wall_h = (GRID_SIZE /game->rays->r_length) * ((WIN_WIDTH / 2) / tan(game->player->fov / 2)); // get the wall height
- b_pix = (WIN_HEIGHT / 2) + (wall_h / 2); // get the bottom pixel
- t_pix = (WIN_HEIGHT / 2) - (wall_h / 2); // get the top pixel
- if (b_pix > WIN_HEIGHT) // check the bottom pixel
-  b_pix = WIN_HEIGHT;
- if (t_pix < 0) // check the top pixel
-  t_pix = 0;
- draw_wall(game, ray, t_pix, b_pix); // draw the wall
- //draw_floor_ceiling(mlx, ray, t_pix, b_pix); // draw the floor and the ceiling
-}
-
-
 
 void draw_line(t_img *img, t_program *game, t_vector start, t_vector end)
 {
@@ -90,7 +66,8 @@ int	unit_circle(float angle, char c) // check the unit circle
 	return (0);
 }
 
-int inter_check(float angle, float *inter, float *step, int is_horizon) // check the intersection
+// check the intersection
+int	inter_check(float angle, float *inter, float *step, int is_horizon)
 {
 	if (is_horizon)
 	{

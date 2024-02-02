@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
+/*   By: juan-anm <juan-anm@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:46:24 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/01 18:16:00 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/02/02 18:28:30 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ t_vector	rotate_vector(t_vector A, t_vector pivot, float theta)
 {
 	t_vector	res;
 
-	//theta *= -1;
 	res.x = round((A.x - pivot.x) * cos(theta) - (A.y - pivot.y) \
 		* sin(theta) + pivot.x);
 	res.y = round((A.x - pivot.x) * sin(theta) + (A.y - pivot.y) \
 		* cos(theta) + pivot.y);
-	
 	return (res);
 }
 
@@ -31,6 +29,7 @@ void	move_along_angle(t_program *game, double theta, int distance)
 {
 	int	x;
 	int	y;
+
 	x = distance * cos(theta);
 	y = distance * sin(theta);
 	game->player->pos.y += y;

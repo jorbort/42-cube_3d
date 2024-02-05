@@ -37,10 +37,10 @@ double	get_x_o(void	*texture, t_program *game)
 
 	if (game->rays->flag == 1)
 		x_o = (int)fmodf((mlx->ray->horiz_x * \
-		(texture->width / TILE_SIZE)), texture->width);
+		(texture->width / GRID_SIZE)), texture->width);
 	else
 		x_o = (int)fmodf((mlx->ray->vert_y * \
-		(texture->width / TILE_SIZE)), texture->width);
+		(texture->width / GRID_SIZE)), texture->width);
 	return (x_o);
 }
 

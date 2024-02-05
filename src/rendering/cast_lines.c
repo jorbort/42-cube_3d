@@ -3,68 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cast_lines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm <juan-anm@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 23:40:14 by juanantonio       #+#    #+#             */
-/*   Updated: 2024/02/02 19:16:31 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/02/04 23:53:10 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
-
-float	control_angle(float angle)
-{
-	if (angle < 0)
-		angle += (2 * M_PI);
-	if (angle > (2 * M_PI))
-		angle -= (2 * M_PI);
-	return (angle);
-}
-
-void draw_line(t_img *img, t_program *game, t_vector start, t_vector end)
-{
-    (void)game;
-	
-    int dx = end.x - start.x;
-    int dy = end.y - start.y;
-    int steps;
-
-    if (abs(dx) > abs(dy))
-        steps = abs(dx);
-    else
-        steps = abs(dy);
-
-    float x_increment = (float)dx / (float)steps;
-    float y_increment = (float)dy / (float)steps;
-
-    float x = start.x;
-    float y = start.y;
-
-    int i = 0;
-    while (i <= steps)
-    {
-        my_mlx_pixel_put(img, round(x), round(y), 0x0000FFFF);
-        x += x_increment;
-        y += y_increment;
-        i++;
-    }
-}
-
-
-int	unit_circle(float angle, char c) // check the unit circle
-{
-	if (c == 'x')
-	{
-		if (angle > 0 && angle < M_PI)
-			return (1);
-	}
-	else if (c == 'y')
-	{
-		if (angle > (M_PI / 2) && angle < (3 * M_PI) / 2)
-			return (1);
-	}
-	return (0);
-}
 
 // check the intersection
 int	inter_check(float angle, float *inter, float *step, int is_horizon)
@@ -85,32 +31,16 @@ int	inter_check(float angle, float *inter, float *step, int is_horizon)
 			*inter += GRID_SIZE;
 			return (-1);
 		}
-	*step *= -1;
+		*step *= -1;
 	}
 	return (1);
 }
 
-int wall_hit(float x, float y, t_program *game) // check the wall hit
-{
-	long	x_m;
-	long	y_m;
-
-	if (x < 0 || y < 0)
-		return (1);
-	x_m = floor (x / GRID_SIZE); // get the x position in the map
-	y_m = floor (y / GRID_SIZE); // get the y position in the map
-	if ((y_m >= game->map->height || x_m >= game->map->width))
-		return (1);
-	if (game->map->map[y_m] && x_m < (int)ft_strlen(game->map->map[y_m]))
-	{
-		if (game->map->map[y_m][x_m] == '1')
-			return (3);
-	}
-	return (0);
-}
-
-
-float get_h_inter(t_program *game, float angl) // get the horizontal intersection
+// get the horizontal intersection
+// check x_step value
+// check the wall hit whit the pixel value and return hypotenuse length
+// if wall hit activate ray flag to cast rays in minimap
+float	get_h_inter(t_program *game, float angl)
 {
 	float	h_x;
 	float	h_y;
@@ -123,10 +53,11 @@ float get_h_inter(t_program *game, float angl) // get the horizontal intersectio
 	h_y = floor(game->player->pos.y / GRID_SIZE) * GRID_SIZE;
 	pixel = inter_check(angl, &h_y, &y_step, 1);
 	h_x = game->player->pos.x + (h_y - game->player->pos.y) / tan(angl);
-	if ((unit_circle(angl, 'y') && x_step > 0) || (!unit_circle(angl, 'y') && x_step < 0)) // check x_step value
+	if ((unit_circle(angl, 'y') && x_step > 0)
+		|| (!unit_circle(angl, 'y') && x_step < 0)) 
 		x_step *= -1;
-	while (!wall_hit(h_x, h_y - pixel, game)) // check the wall hit whit the pixel value
- 	{
+	while (!wall_hit(h_x, h_y - pixel, game))
+	{
 		h_x += x_step;
 		h_y += y_step;
 		game->rays->end_point_x.x = h_x;
@@ -134,10 +65,12 @@ float get_h_inter(t_program *game, float angl) // get the horizontal intersectio
 	}
 	if (wall_hit(h_x, h_y - pixel, game) == 3)
 		game->rays->hit = 1;
- 	return (sqrt(pow(h_x - game->player->pos.x, 2) + pow(h_y - game->player->pos.y, 2))); // get the distance
+	return (sqrt(pow(h_x - game->player->pos.x, 2)
+			+ pow(h_y - game->player->pos.y, 2)));
 }
 
-float get_v_inter(t_program *game, float angl) // get the vertical intersection
+// get the vertical intersection asame functionality as above but vertical 
+float	get_v_inter(t_program *game, float angl)
 {
 	float	v_x;
 	float	v_y;
@@ -148,11 +81,12 @@ float get_v_inter(t_program *game, float angl) // get the vertical intersection
 	x_step = GRID_SIZE; 
 	y_step = GRID_SIZE * tan(angl);
 	v_x = floor(game->player->pos.x / GRID_SIZE) * GRID_SIZE;
-	pixel = inter_check(angl, &v_x, &x_step, 0); // check the intersection and get the pixel value
+	pixel = inter_check(angl, &v_x, &x_step, 0); 
 	v_y = game->player->pos.y + (v_x - game->player->pos.x) * tan(angl);
-	if ((unit_circle(angl, 'x') && y_step < 0) || (!unit_circle(angl, 'x') && y_step > 0)) // check y_step value
+	if ((unit_circle(angl, 'x') && y_step < 0)
+		|| (!unit_circle(angl, 'x') && y_step > 0))
 		y_step *= -1;
-	while (!wall_hit(v_x - pixel, v_y, game)) // check the wall hit whit the pixel value
+	while (!wall_hit(v_x - pixel, v_y, game))
 	{
 		v_x += x_step;
 		v_y += y_step;
@@ -161,7 +95,8 @@ float get_v_inter(t_program *game, float angl) // get the vertical intersection
 	}
 	if (wall_hit(v_x, v_y - pixel, game) == 3)
 		game->rays->hit = 1;
-	return (sqrt(pow(v_x - game->player->pos.x, 2) + pow(v_y - game->player->pos.y, 2))); // get the distance
+	return (sqrt(pow(v_x - game->player->pos.x, 2)
+			+ pow(v_y - game->player->pos.y, 2)));
 }
 
 void loop_caster(t_program *game)
@@ -205,12 +140,3 @@ void loop_caster(t_program *game)
 	}
 }
 
-double	to_degrees(double radians)
-{
-	return (radians * (180.0 / M_PI));
-}
-
-double	to_radians(int degrees)
-{
-	return ((M_PI / 180) * degrees);
-}

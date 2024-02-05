@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/02 17:15:52 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/02/04 23:45:09 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,17 +181,22 @@ void		ft_put_2d_walls(t_program *game, t_img *img);
 void		color_map(t_program *game, t_img *img);
 //raycasting.c
 void		init_vec(t_program *game);
-////raycasting.c
 void		circle_control(t_program *game, double theta);
 t_vector	rotate_vector(t_vector A, t_vector pivot, float theta);
 void		move_along_angle(t_program *game, double theta, int distance);
-//cast_lines.c
-void		loop_caster(t_program *game);
-void		draw_line(t_img *img, t_program *game, t_vector start, \
-			t_vector end);
-//maths
 double		to_degrees(double radians);
 double		to_radians(int degrees);
+//cast_lines.c
+void		loop_caster(t_program *game);
+//draw_lines.c
+void		draw_line(t_img *img, t_program *game, t_vector start, \
+			t_vector end);
+//cast_walls.c
+void		render_wall(t_program *game, int ray);
+float		control_angle(float angle);
+int			unit_circle(float angle, char c);
+int			wall_hit(float x, float y, t_program *game);
+
 //mouse_maping.c
 int			mouse_moving(int x, int y, t_program *game);
 

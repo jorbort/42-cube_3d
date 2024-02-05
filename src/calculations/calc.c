@@ -6,7 +6,7 @@
 /*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:06:28 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/29 17:20:36 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/02/04 23:38:15 by juanantonio      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,14 @@ int	ft_longest(char **map)
 		i++;
 	}
 	return (len);
+}
+
+double	to_degrees(double radians)
+{
+	return (radians * (180.0 / M_PI));
+}
+
+double	to_radians(int degrees)
+{
+	return ((M_PI / 180) * degrees);
 }

@@ -5,7 +5,7 @@ SRC= main.c \
 	src/parsing/ft_epurstr.c src/parsing/map_utils.c src/parsing/map_error.c src/parsing/map.c src/parsing/textures_handling.c src/parsing/map_checks.c src/parsing/map_utils_2.c \
 	src/calculations/calc.c src/calculations/colision.c \
 	src/rendering/rendering_minimap.c src/rendering/rendering_minimap_2.c src/rendering/color_floor_cieling.c \
-	src/rendering/cast_lines.c \
+	src/rendering/cast_lines.c src/rendering/cast_walls.c src/rendering/draw_line.c\
 	src/3d_engine/raycasting.c \
 	src/inputs/key_maping.c src/inputs/mouse_maping.c \
 

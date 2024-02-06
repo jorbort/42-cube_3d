@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:41:15 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/29 17:21:16 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/02/06 18:45:55 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,28 @@ int	ft_atrgb(char *s)
 {
 	int			i;
 	int			ret;
-	static int	flag = 1;
 
 	i = 0;
 	ret = 0;
 	while (s[i] == ' ' || s[i] == '\t')
 		i++;
+	if (!s[i])
+		return (-1);
 	while (s[i])
 	{
 		if (s[i] == '-' || s[i] == '+')
 		{
 			if (s[i] == '-')
-			{
-				flag = -1;
-			}
+				return (-1);
 			i++;
 		}
 		if (!ft_isdigit(s[i]))
-			flag = -1;
+			return (-1);
 		if (s[i] >= '0' && s[i] <= '9')
 			ret = (ret * 10) + (s[i] - '0');
 		i++;
 	}
-	return (ret * flag);
+	return (ret);
 }
 
 void	atoi_rgb(int *rgb, char **str)
@@ -78,9 +77,14 @@ void	atoi_rgb(int *rgb, char **str)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	if (!str[i])
 	{
-		if (ft_strlen(str[i]) > 4)
+		free_double_arr(str);
+		ft_map_error(3);
+	}
+	while (i < 3)
+	{
+		if (!str[i] || ft_strlen(str[i]) > 4)
 		{
 			free_double_arr(str);
 			ft_map_error(3);

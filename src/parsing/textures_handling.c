@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:33:59 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/06 13:44:04 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 15:46:00 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	check_valid_path(t_data *data)
 
 void	new_txt(void *mlx, char *path, t_xpm *texture)
 {
-
 	texture->mlx_img = \
 	mlx_xpm_file_to_image(mlx, path, &texture->width, &texture->height);
 	if (!texture->mlx_img)

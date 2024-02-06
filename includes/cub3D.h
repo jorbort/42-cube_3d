@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/06 12:23:24 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 16:12:05 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define L_ARROW 123
 # define R_ARROW 124
 # define ESC 53
-# define GRID_SIZE 8
+# define GRID_SIZE 16
 # define WIN_WIDTH 1300
 # define WIN_HEIGHT 1000
 
@@ -214,6 +214,7 @@ void		render_wall(t_program *game, int ray);
 float		control_angle(float angle);
 int			unit_circle(float angle, char c);
 int			wall_hit(float x, float y, t_program *game);
+int			unit_circle(float angle, char c);
 
 //mouse_maping.c
 int			mouse_moving(int x, int y, t_program *game);

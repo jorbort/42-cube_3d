@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <cub3D.h>
-#define MAX_LINE_LENGTH 256
 
 static int	get_px_color(t_xpm *img, int x, int y)
 {
@@ -19,18 +18,6 @@ static int	get_px_color(t_xpm *img, int x, int y)
 
 	byte = img->addr + ((y * img->line_len) + (x * img->bpp / 8));
 	return (*(unsigned int *)byte);
-}
-
-int	reverse_bytes(int c)
-{
-	unsigned int	b;
-
-	b = 0;
-	b |= (c & 0xFF) << 24;
-	b |= (c & 0xFF00) << 8;
-	b |= (c & 0xFF0000) >> 8;
-	b |= (c & 0xFF000000) >> 24;
-	return (b);
 }
 
 t_xpm	*get_texture(t_program *game, int flag)
@@ -71,12 +58,9 @@ void	draw_wall(t_program *game, int t_pix, int b_pix, double wall_h)
 	double			x_o;
 	double			y_o;
 	t_xpm			*texture;
-	//uint32_t		*arr;
 	double			factor;
 
 	texture = get_texture(game, game->rays->flag);
-	//arr = read_xpm(game->data->n_texture,
-			//&texture->width, &texture->height);
 	factor = (double)texture->height / wall_h;
 	x_o = get_x_o(texture, game);
 	y_o = (t_pix - (WIN_HEIGHT / 2) + (wall_h / 2)) * factor;
@@ -89,21 +73,6 @@ void	draw_wall(t_program *game, int t_pix, int b_pix, double wall_h)
 		y_o += factor;
 		t_pix++;
 	}
-}
-
-int	unit_circle(float angle, char c) // check the unit circle
-{
-	if (c == 'x')
-	{
-		if (angle > 0 && angle < M_PI)
-			return (1);
-	}
-	else if (c == 'y')
-	{
-		if (angle > (M_PI / 2) && angle < (3 * M_PI) / 2)
-			return (1);
-	}
-	return (0);
 }
 
 void	render_wall(t_program *game, int ray)
@@ -124,33 +93,4 @@ void	render_wall(t_program *game, int ray)
 		t_pix = 0;
 	game->rays->index = ray;
 	draw_wall(game, t_pix, b_pix, wall_h);
-}
-
-float	control_angle(float angle)
-{
-	if (angle < 0)
-		angle += (2 * M_PI);
-	if (angle > (2 * M_PI))
-		angle -= (2 * M_PI);
-	return (angle);
-}
-
-//checkl in **map index is wall is hit = 1
-int	wall_hit(float x, float y, t_program *game)
-{
-	long	x_m;
-	long	y_m;
-
-	if (x < 0 || y < 0)
-		return (1);
-	x_m = floor (x / GRID_SIZE);
-	y_m = floor (y / GRID_SIZE);
-	if ((y_m >= game->map->height || x_m >= game->map->width))
-		return (1);
-	if (game->map->map[y_m] && x_m < (int)ft_strlen(game->map->map[y_m]))
-	{
-		if (game->map->map[y_m][x_m] == '1')
-			return (3);
-	}
-	return (0);
 }

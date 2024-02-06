@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_minimap_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantoniomartinezmorales <juanantonio    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:55:14 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/30 00:03:01 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/02/06 16:34:23 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

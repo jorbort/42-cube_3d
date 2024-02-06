@@ -1,13 +1,13 @@
-   WE            textures/Layer 2 - Marble Cave - Center-resized.xpm 2
-NO     textures/Layer 2 - Marble Cave - Center-resized.xpm 2
+   WE            textures/map2/WE.xpm
+NO     textures/map2/NO.xpm
 
 
 
-SO textures/Layer 2 - Marble Cave - Center-resized.xpm
+SO textures/map2/SO.xpm
 
 F   69, 222, 199
 
-EA textures/Layer 2 - Marble Cave - Center-resized.xpm
+EA textures/map2/EA.xpm
 
 
 C 235, 198, 52

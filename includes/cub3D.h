@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/06 01:15:49 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/02/06 12:23:24 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,11 @@ typedef struct s_rays
 
 typedef struct s_xpm
 {
-	void	*sprite;
+	void	*mlx_img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
 	int		width;
 	int		height;
 }	t_xpm;

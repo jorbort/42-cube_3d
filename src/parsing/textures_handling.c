@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_handling.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:33:59 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/05 22:42:12 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/02/06 13:44:04 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,34 @@ void	check_valid_path(t_data *data)
 		close (fd[i--]);
 }
 
+void	new_txt(void *mlx, char *path, t_xpm *texture)
+{
+
+	texture->mlx_img = \
+	mlx_xpm_file_to_image(mlx, path, &texture->width, &texture->height);
+	if (!texture->mlx_img)
+	{
+		free(texture);
+		ft_map_error(7);
+	}
+	texture->addr = mlx_get_data_addr(texture->mlx_img, &texture->bpp,
+			&texture->line_len, &texture->endian);
+}
+
 void	get_sprites_pointers(t_sprites *sprites, t_data *data)
 {
 	check_valid_path(data);
-	sprites->es_sprite->sprite = mlx_xpm_file_to_image(data->mlx,
-			data->e_texture, &sprites->es_sprite->width, &sprites->es_sprite->height);
-	sprites->no_sprite->sprite = mlx_xpm_file_to_image(data->mlx,
-			data->e_texture, &sprites->no_sprite->width, &sprites->no_sprite->height);
-	sprites->so_sprite->sprite = mlx_xpm_file_to_image(data->mlx,
-			data->e_texture, &sprites->so_sprite->width, &sprites->so_sprite->height);
-	sprites->we_sprite->sprite = mlx_xpm_file_to_image(data->mlx,
-			data->e_texture, &sprites->we_sprite->width, &sprites->we_sprite->height);
+	new_txt(data->mlx, data->n_texture, sprites->no_sprite);
+	new_txt(data->mlx, data->s_texture, sprites->so_sprite);
+	new_txt(data->mlx, data->e_texture, sprites->es_sprite);
+	new_txt(data->mlx, data->w_texture, sprites->we_sprite);
 }
 
 void	get_textures(t_map *map, t_data *data, t_program *game)
 {
 	int	i;
+
 	(void)game;
-	
 	i = 0;
 	while (i < 6)
 	{
@@ -70,5 +80,5 @@ void	get_textures(t_map *map, t_data *data, t_program *game)
 			data->e_texture = ft_strdup(ft_strchr(map->map[i], ' ') + 1);
 		i++;
 	}
-// 	get_sprites_pointers(game->sprites, game->data);
+	get_sprites_pointers(game->sprites, game->data);
 }

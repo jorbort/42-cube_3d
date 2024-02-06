@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:38:50 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/05 23:07:06 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/02/06 13:53:49 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void init_sprites(t_program *game)
+void	init_sprites(t_program *game)
 {
 	game->sprites = malloc(sizeof(t_sprites));
 	if (!game->sprites)
 		ft_map_error(7);
 	game->sprites->es_sprite = malloc(sizeof(t_xpm));
-	game->sprites->es_sprite->sprite = NULL;
+	ft_memset(game->sprites->es_sprite, 0, sizeof(t_xpm));
 	game->sprites->no_sprite = malloc(sizeof(t_xpm));
-	game->sprites->no_sprite->sprite = NULL;
+	ft_memset(game->sprites->no_sprite, 0, sizeof(t_xpm));
 	game->sprites->so_sprite = malloc(sizeof(t_xpm));
-	game->sprites->so_sprite->sprite = NULL;
+	ft_memset(game->sprites->so_sprite, 0, sizeof(t_xpm));
 	game->sprites->we_sprite = malloc(sizeof(t_xpm));
-	game->sprites->we_sprite->sprite = NULL;
+	ft_memset(game->sprites->we_sprite, 0, sizeof(t_xpm));
 	if (!game->sprites->es_sprite || !game->sprites->no_sprite || \
 		!game->sprites->so_sprite || !game->sprites->we_sprite)
 		ft_map_error(7);
@@ -54,7 +54,6 @@ void	init_structs(t_program *game)
 	if (!game->rays)
 		ft_map_error(7);
 	init_sprites(game);
-	
 }
 
 void	init_vec(t_program *game)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_minimap.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 11:49:41 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/06 01:20:20 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/02/06 12:28:57 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,4 @@ void	print_grid(t_program *game)
 	draw_filled_circle(&img, game->player->pos.x, game->player->pos.y);
 	mlx_put_image_to_window(game->data->mlx, game->data->window, img.img, 0, 0);
 	mlx_destroy_image(game->data->mlx, img.img);
-	
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:20 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/05 23:55:16 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:29:44 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	my_mlx_pixel_put2(t_program *game, int x, int y, int color)
 		return ;
 	else if (y >= WIN_HEIGHT)
 		return ;
-	mlx_pixel_put(game->img,game->img->img, x, y, color);
+	mlx_pixel_put(game->img, game->img->img, x, y, color);
 }
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
@@ -44,10 +44,10 @@ int	end_game(t_program *game)
 
 void	start_game(t_program *game, char *map_path)
 {
+	game->data->mlx = mlx_init();
 	parse_map(game->map, map_path, game);
 	if (check_map(game) == true)
 	{
-		game->data->mlx = mlx_init();
 		game->data->window = mlx_new_window(game->data->mlx,
 				WIN_WIDTH, WIN_HEIGHT, "cub3D");
 		game->map->start_x *= (GRID_SIZE);

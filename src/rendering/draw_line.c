@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 23:41:58 by juanantonio       #+#    #+#             */
-/*   Updated: 2024/02/05 17:56:46 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/02/06 12:35:16 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 void	draw_line(t_img *img, t_program *game, t_vector start, t_vector end)
 {
-    (void)game;
-	
-    int dx = end.x - start.x;
-    int dy = end.y - start.y;
-    int steps;
+	(void)game;
 
-    if (abs(dx) > abs(dy))
-        steps = abs(dx);
-    else
-        steps = abs(dy);
+	int	dx = end.x - start.x;
+	int	dy = end.y - start.y;
+	int steps;
 
-    float x_increment = (float)dx / (float)steps;
-    float y_increment = (float)dy / (float)steps;
+	if (abs(dx) > abs(dy))
+		steps = abs(dx);
+	else
+		steps = abs(dy);
 
-    float x = start.x;
-    float y = start.y;
+	float x_increment = (float)dx / (float)steps;
+	float y_increment = (float)dy / (float)steps;
 
-    int i = 0;
-    while (i <= steps)
-    {
-        my_mlx_pixel_put(img, round(x), round(y), 0x0000FFFF);
-        x += x_increment;
-        y += y_increment;
-        i++;
-    }
+	float x = start.x;
+	float y = start.y;
+
+	int i = 0;
+	while (i <= steps)
+	{
+		my_mlx_pixel_put(img, round(x), round(y), 0x0000FFFF);
+		x += x_increment;
+		y += y_increment;
+		i++;
+	}
 }

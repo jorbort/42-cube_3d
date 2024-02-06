@@ -6,7 +6,7 @@
 /*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 23:40:14 by juanantonio       #+#    #+#             */
-/*   Updated: 2024/02/04 23:53:10 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/02/06 00:00:20 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ float	get_h_inter(t_program *game, float angl)
 	{
 		h_x += x_step;
 		h_y += y_step;
+	}
 		game->rays->end_point_x.x = h_x;
 		game->rays->end_point_x.y = h_y;
-	}
 	if (wall_hit(h_x, h_y - pixel, game) == 3)
 		game->rays->hit = 1;
 	return (sqrt(pow(h_x - game->player->pos.x, 2)
@@ -90,9 +90,9 @@ float	get_v_inter(t_program *game, float angl)
 	{
 		v_x += x_step;
 		v_y += y_step;
+	}
 		game->rays->end_point_y.x = v_x;
 		game->rays->end_point_y.y = v_y;
-	}
 	if (wall_hit(v_x, v_y - pixel, game) == 3)
 		game->rays->hit = 1;
 	return (sqrt(pow(v_x - game->player->pos.x, 2)

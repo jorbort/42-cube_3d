@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm <juan-anm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:20 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/02 17:18:17 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/02/05 23:55:16 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	my_mlx_pixel_put2(t_program *game, int x, int y, int color)
+{
+	if (x < 0)
+		return ;
+	else if (x >= WIN_WIDTH)
+		return ;
+	if (y < 0)
+		return ;
+	else if (y >= WIN_HEIGHT)
+		return ;
+	mlx_pixel_put(game->img,game->img->img, x, y, color);
+}
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
@@ -42,6 +55,7 @@ void	start_game(t_program *game, char *map_path)
 		game->map->start_y *= (GRID_SIZE);
 		game->map->start_y += (GRID_SIZE / 2);
 		init_vec(game);
+		get_sprites_pointers(game->sprites, game->data);
 		print_grid(game);
 		mlx_hook(game->data->window, 17, 0, end_game, game);
 		mlx_hook(game->data->window, 3, 1L << 1, deal_key, game);

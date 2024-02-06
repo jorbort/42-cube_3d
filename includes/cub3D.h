@@ -6,7 +6,7 @@
 /*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/04 23:45:09 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/02/06 01:15:49 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdbool.h>
+# include <string.h>
+# include <ctype.h> 
 
 # define M_PI 3.14159265358979323846264338327950288
 # define ROT_1 0.196349540849362
@@ -101,6 +103,7 @@ typedef struct s_data
 
 typedef struct s_rays
 {
+	int			index;	
 	double		r_angle;
 	double		r_length;
 	t_vector	end_point_x;
@@ -109,13 +112,21 @@ typedef struct s_rays
 	bool		hit;
 }	t_rays;
 
+typedef struct s_xpm
+{
+	void	*sprite;
+	int		width;
+	int		height;
+}	t_xpm;
+
 typedef struct s_sprites
 {
-	void	*no_sprite;
-	void	*so_sprite;
-	void	*we_sprite;
-	void	*es_sprite;
+	t_xpm	*no_sprite;
+	t_xpm	*so_sprite;
+	t_xpm	*we_sprite;
+	t_xpm	*es_sprite;
 }	t_sprites;
+
 
 typedef struct s_program
 {
@@ -147,6 +158,7 @@ int			deal_key_2(int key, t_program *game);
 //main.c
 int			end_game(t_program *game);
 void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void		my_mlx_pixel_put2(t_program *game, int x, int y, int color);
 void		print_grid(t_program *game);
 //utils.c
 void		free_double_arr(char **arr);
@@ -155,6 +167,8 @@ int			ft_strlen_cub(char *s);
 bool		is_invalid(char c);
 //textures_handling.c
 void		get_textures(t_map *map, t_data *data, t_program *game);
+void		get_sprites_pointers(t_sprites *sprites, t_data *data);
+void		check_valid_path(t_data *data);
 //map_error.c
 void		ft_map_error(int num_error);
 void		print_error(char *str);

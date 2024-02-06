@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:16:31 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/29 17:21:05 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/02/06 20:10:03 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ void	flood_fill(char **mapa, int y, int x)
 		flood_fill(mapa, y - 1, x);
 		flood_fill(mapa, y, x + 1);
 		flood_fill(mapa, y, x - 1);
+		flood_fill(mapa, y + 1, x + 1);
+		flood_fill(mapa, y - 1, x - 1);
+		flood_fill(mapa, y + 1, x - 1);
+		flood_fill(mapa, y - 1, x + 1);
 	}
 }
 

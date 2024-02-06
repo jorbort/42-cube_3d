@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/06 17:27:14 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 19:58:21 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define PERIMETER_ERROR "Invalid map perimeter"
 # define REAPEATED_START "More than one starting position"
 # define MALLOC_ERROR "Failed malloc"
+# define SIZE_TOO_BIG "Map to big to fit the screen"
 
 typedef enum s_direc
 {

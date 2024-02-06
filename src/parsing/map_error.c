@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 18:43:34 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/01/29 17:21:08 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/02/06 19:04:36 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ void	ft_map_error(int num_error)
 		print_error(REAPEATED_START);
 	if (num_error == 7)
 		print_error(MALLOC_ERROR);
+	if (num_error == 8)
+		print_error(SIZE_TOO_BIG);
 	exit(1);
 }

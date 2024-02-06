@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:08:25 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/06 18:38:24 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 19:23:26 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ bool	check_map(t_program *game)
 {
 	check_walls(game->map);
 	game->map->height = ft_arrlen(game->map->map);
+	if (game->map->height > 50)
+		ft_map_error(8);
 	game->map->width = ft_longest(game->map->map);
+	if (game->map->width > 50)
+		ft_map_error(8);
 	return (true);
 }
 

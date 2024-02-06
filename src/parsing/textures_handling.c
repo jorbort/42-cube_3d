@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:33:59 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/06 15:46:00 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:18:51 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,16 @@ void	get_textures(t_map *map, t_data *data, t_program *game)
 	i = 0;
 	while (i < 6)
 	{
-		if (!ft_strncmp(map->map[i], "NO", 2))
+		if (!ft_strncmp(map->map[i], "NO", 2) && ft_strlen(map->map[i]) > 2)
 			data->n_texture = ft_strdup(ft_strchr(map->map[i], ' ') + 1);
-		else if (!ft_strncmp(map->map[i], "SO", 1))
+		else if (!ft_strncmp(map->map[i], "SO", 1)
+			&& ft_strlen(map->map[i]) > 2)
 			data->s_texture = ft_strdup(ft_strchr(map->map[i], ' ') + 1);
-		else if (!ft_strncmp(map->map[i], "WE", 1))
+		else if (!ft_strncmp(map->map[i], "WE", 1)
+			&& ft_strlen(map->map[i]) > 2)
 			data->w_texture = ft_strdup(ft_strchr(map->map[i], ' ') + 1);
-		else if (!ft_strncmp(map->map[i], "EA", 1))
+		else if (!ft_strncmp(map->map[i], "EA", 1)
+			&& ft_strlen(map->map[i]) > 2)
 			data->e_texture = ft_strdup(ft_strchr(map->map[i], ' ') + 1);
 		i++;
 	}

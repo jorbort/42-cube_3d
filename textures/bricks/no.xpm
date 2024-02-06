@@ -1,0 +1,26 @@
+/* XPM */
+static char *Pixeival_wood_tileset_resized[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 4 1 ",
+"  c #77535B",
+". c #91606A",
+"X c #5E414A",
+"o c white",
+/* pixels */
+"       .X       ",
+"       .X.      ",
+"..    . X..  ...",
+"XXXXXXXXXXXXXXXX",
+"    .X .        ",
+"    .X.         ",
+"   . X.     ....",
+"XXXXXXXXXXXXXXXX",
+"         X .    ",
+"        .X.     ",
+"...   ...X.   ..",
+"XXXXXXXXXXXXXXXX",
+"       X..      ",
+"      .X.       ",
+"   ... X.      .",
+"XXXXXXXXXXXXXXXX"
+};

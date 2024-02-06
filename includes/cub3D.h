@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/06 17:01:41 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:27:14 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,6 @@ typedef struct s_sprites
 	t_xpm	*we_sprite;
 	t_xpm	*es_sprite;
 }	t_sprites;
-
 
 typedef struct s_program
 {

@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:44:41 by jbortolo          #+#    #+#             */
-/*   Updated: 2023/05/09 11:18:16 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:13:21 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	if (s)
 	{
-		i++;
+		while (s[i] != '\0')
+		{
+			i++;
+		}
 	}
 	return (i);
 }

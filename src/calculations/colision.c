@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colision.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:22:32 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/01 17:34:12 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/02/06 20:16:40 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	is_in_bounds(t_vector test, t_program *game)
 
 	max = (test.x) / GRID_SIZE;
 	may = (test.y) / GRID_SIZE;
-	printf("%i max %i may \n", max, may);
 	if (game->map->map[may][max] == '1')
 		return (1);
 	else

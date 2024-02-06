@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_maping.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juanantonio <juanantonio@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 20:25:16 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/01 18:16:25 by juanantonio      ###   ########.fr       */
+/*   Updated: 2024/02/06 20:18:03 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int	deal_key(int key, t_program *game)
 		circle_control(game, M_PI / 16);
 		game->player->dir = rotate_vector(game->player->dir,
 				game->player->pos, (M_PI / 16));
-		printf("%f\n", to_degrees(game->player->orientation));
 	}
 	else if (key == L_ARROW)
 	{

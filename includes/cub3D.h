@@ -6,7 +6,7 @@
 /*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/06 19:58:21 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 20:37:32 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define WIN_WIDTH 1300
 # define WIN_HEIGHT 1000
 
-# define INVALID_CHAR "Map: invalid chars in  map"
+# define INVALID_CHAR "Map: invalid chars in  map or missing values"
 # define RGB_RANGE "Invalid rgb: [0 - 255]"
 # define PERIMETER_ERROR "Invalid map perimeter"
 # define REAPEATED_START "More than one starting position"

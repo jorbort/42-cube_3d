@@ -1,7 +1,7 @@
-NO /Users/jbortolo/Desktop/42-cube_3d/textures/imagy-images 2/16x16-tiles_0 (4)-resized.xpm
-SO textures/imagy-images 2/16x16-tiles_0 (3)-resized.xpm
-WE textures/imagy-images 2/16x16-tiles_0 (2)-resized.xpm
-EA /Users/jbortolo/Desktop/42-cube_3d/textures/imagy-images 2/16x16-tiles_0 (1)-resized.xpm
+NO textures/map1/EA.xpm
+SO textures/map1/EA.xpm
+WE textures/map1/EA.xpm
+EA textures/map1/EA.xpm
 
 C  100, 100, 100
 

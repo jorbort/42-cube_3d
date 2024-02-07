@@ -1,16 +1,12 @@
-   WE            textures/tile.xpm
-NO     textures/tile.xpm
+NO textures/bricks/we.xpm
+SO textures/bricks/no.xpm
+WE textures/bricks/tile.xpm
+EA textures/bricks/es.xpm
+
+C  10, 10, 10
 
 
-
-SO textures/map2/SO.xpm
-
-F   69, 222, 199
-
-EA textures/map2/EA.xpm
-
-
-C 235, 198, 52
+F 235, 198, 52
 
 111111111111111111111111
 100000000000000000000001

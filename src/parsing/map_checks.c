@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:16:31 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/06 20:15:26 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 23:06:53 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ void	flood_fill(char **mapa, int y, int x)
 bool	check_perimeter(char **mapa, int row, int col)
 {
 	char	**map_copy;
-	int		i;
 
-	i = 0;
 	map_copy = ft_arrdup(mapa);
 	if (!map_copy)
 		ft_map_error(7);

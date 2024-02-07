@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colision.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:22:32 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/06 20:16:40 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/02/06 23:06:16 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,18 @@ int	is_in_bounds(t_vector test, t_program *game)
 int	test_move_along_angle(t_program *game, double theta, int distance)
 {
 	t_vector	test_pos;
+	int			i;	
 
-	test_pos.x = round(distance * cos(theta));
-	test_pos.y = round(distance * sin(theta));
-	test_pos.x += game->player->pos.x;
-	test_pos.y += game->player->pos.y;
-	if (is_in_bounds(test_pos, game))
-		return (1);
-	else
-		return (0);
+	i = 0;
+	while (i <= distance)
+	{
+		test_pos.x = round(i * cos(theta));
+		test_pos.y = round(i * sin(theta));
+		test_pos.x += game->player->pos.x;
+		test_pos.y += game->player->pos.y;
+		if (is_in_bounds(test_pos, game))
+			return (1);
+		i++;
+	}
+	return (0);
 }

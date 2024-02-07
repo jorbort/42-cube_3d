@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/06 20:37:32 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/02/07 01:18:14 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define L_ARROW 123
 # define R_ARROW 124
 # define ESC 53
-# define GRID_SIZE 16
+# define GRID_SIZE 8
 # define WIN_WIDTH 1300
 # define WIN_HEIGHT 1000
 
@@ -132,6 +132,7 @@ typedef struct s_sprites
 	t_xpm	*es_sprite;
 }	t_sprites;
 
+
 typedef struct s_program
 {
 	t_data		*data;
@@ -206,6 +207,8 @@ double		to_degrees(double radians);
 double		to_radians(int degrees);
 //cast_lines.c
 void		loop_caster(t_program *game);
+void		lp_cast2(t_program *game, double hori_int, double vert_int);
+
 //draw_lines.c
 void		draw_line(t_img *img, t_program *game, t_vector start, \
 			t_vector end);

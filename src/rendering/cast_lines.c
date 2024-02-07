@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_lines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 23:40:14 by juanantonio       #+#    #+#             */
-/*   Updated: 2024/02/06 12:32:10 by jbortolo         ###   ########.fr       */
+/*   Updated: 2024/02/07 00:24:14 by juan-anm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ float	get_v_inter(t_program *game, float angl)
 
 void	loop_caster(t_program *game)
 {
-	double	hori_intersec;
-	double	vert_intersec;
+	double	hori_int;
+	double	vert_int;
 	int		rayito;
 
 	rayito = 0;
@@ -111,35 +111,40 @@ void	loop_caster(t_program *game)
 	{
 		game->rays->flag = 0;
 		game->rays->hit = 0;
-		hori_intersec = get_h_inter(game, control_angle(game->rays->r_angle));
-		vert_intersec = get_v_inter(game, control_angle(game->rays->r_angle));
-		if (vert_intersec <= hori_intersec)
-		{
-			game->rays->r_length = vert_intersec;
-		}
-		else
-		{
-			game->rays->r_length = hori_intersec;
-			game->rays->flag = 1;
-		}
-		if (game->rays->end_point_y.x < WIN_WIDTH
-			&& game->rays->end_point_y.y < WIN_HEIGHT
-			&& game->rays->end_point_y.x >= 0 && game->rays->end_point_y.y >= 0)
-		{
-			if (vert_intersec <= hori_intersec)
-				draw_line(game->img, game, game->player->pos,
-					game->rays->end_point_y);
-		}
-		if (game->rays->end_point_x.x < WIN_WIDTH
-			&& game->rays->end_point_x.y < WIN_HEIGHT
-			&& game->rays->end_point_x.x >= 0 && game->rays->end_point_x.y >= 0)
-		{
-			if (vert_intersec > hori_intersec)
-				draw_line(game->img, game,
-					game->player->pos, game->rays->end_point_x);
-		}
+		hori_int = get_h_inter(game, control_angle(game->rays->r_angle));
+		vert_int = get_v_inter(game, control_angle(game->rays->r_angle));
+		lp_cast2(game, hori_int, vert_int);
 		render_wall(game, rayito);
 		rayito++;
 		game->rays->r_angle += (game->player->fov / WIN_WIDTH);
+	}
+}
+
+void	lp_cast2(t_program *game, double hori_int, double vert_int)
+{
+	if (vert_int <= hori_int)
+	{
+		game->rays->r_length = vert_int;
+	}
+	else
+	{
+		game->rays->r_length = hori_int;
+		game->rays->flag = 1;
+	}
+	if (game->rays->end_point_y.x < WIN_WIDTH
+		&& game->rays->end_point_y.y < WIN_HEIGHT
+		&& game->rays->end_point_y.x >= 0 && game->rays->end_point_y.y >= 0)
+	{
+		if (vert_int <= hori_int)
+			draw_line(game->img, game, game->player->pos,
+				game->rays->end_point_y);
+	}
+	if (game->rays->end_point_x.x < WIN_WIDTH
+		&& game->rays->end_point_x.y < WIN_HEIGHT
+		&& game->rays->end_point_x.x >= 0 && game->rays->end_point_x.y >= 0)
+	{
+		if (vert_int > hori_int)
+			draw_line(game->img, game,
+				game->player->pos, game->rays->end_point_x);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_lines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 23:40:14 by juanantonio       #+#    #+#             */
-/*   Updated: 2024/02/07 00:24:14 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:27:28 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void	lp_cast2(t_program *game, double hori_int, double vert_int)
 		&& game->rays->end_point_y.x >= 0 && game->rays->end_point_y.y >= 0)
 	{
 		if (vert_int <= hori_int)
-			draw_line(game->img, game, game->player->pos,
+			draw_line(game->img, game->line, game->player->pos,
 				game->rays->end_point_y);
 	}
 	if (game->rays->end_point_x.x < WIN_WIDTH
@@ -144,7 +144,7 @@ void	lp_cast2(t_program *game, double hori_int, double vert_int)
 		&& game->rays->end_point_x.x >= 0 && game->rays->end_point_x.y >= 0)
 	{
 		if (vert_int > hori_int)
-			draw_line(game->img, game,
+			draw_line(game->img, game->line,
 				game->player->pos, game->rays->end_point_x);
 	}
 }

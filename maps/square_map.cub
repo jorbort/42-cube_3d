@@ -1,12 +1,12 @@
-NO textures/bricks/we.xpm
-SO textures/bricks/no.xpm
-WE textures/bricks/tile.xpm
-EA textures/bricks/es.xpm
+NO /Users/jbortolo/Desktop/42-cube_3d/textures/imagy-images 2/16x16-tiles_0 (4)-resized.xpm
+SO textures/imagy-images 2/16x16-tiles_0 (3)-resized.xpm
+WE textures/imagy-images 2/16x16-tiles_0 (2)-resized.xpm
+EA /Users/jbortolo/Desktop/42-cube_3d/textures/imagy-images 2/16x16-tiles_0 (1)-resized.xpm
 
-C  10, 10, 10
+C  100, 100, 100
 
 
-F 235, 198, 52
+F 235, 198, 200
 
 111111111111111111111111
 100000000000000000000001
@@ -19,7 +19,7 @@ F 235, 198, 52
 100000100010000000000001
 100000100010000100010001
 100000100010000000000001
-100000111100001010100001
+100000111110001010100001
 100000000000000000000001
 1000000000000000000000011111111
 100000000       000000000000001

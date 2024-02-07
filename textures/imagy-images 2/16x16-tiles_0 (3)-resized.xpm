@@ -1,0 +1,29 @@
+/* XPM */
+static char *_6x16_tiles_0__3__resized[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 7 1 ",
+"  c #9C5330",
+". c #50312B",
+"X c #703E2D",
+"o c #22191C",
+"O c #372E24",
+"+ c #2B2124",
+"@ c white",
+/* pixels */
+" .Xo  XOo  O..+ ",
+"XXX+ ..OoX..XXoX",
+" XOoOXOO+OX XO+O",
+"oo+o++o+++++ooo+",
+" .OX+  Xo  .OX.+",
+"XX.X+ ..o XOX.Xo",
+"O.XOoXX +XOX  X+",
+"++ooo+ooo+oo+ooo",
+"XO.o  .OO+  O+ X",
+".XX+X.XX.+X.OoXO",
+" XO+ XOX +OXX+OX",
+"oo+oo+oo+oooo+o+",
+"O+ X.O+ XOX.+  .",
+".oXO.Xo ...XoX.X",
+"Xo.XOXo.O XO+OX.",
+"o++oo+o+oooo+oo+"
+};

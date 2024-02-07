@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-anm < juan-anm@student.42barcelona    +#+  +:+       +#+        */
+/*   By: jbortolo <jbortolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:05 by jbortolo          #+#    #+#             */
-/*   Updated: 2024/02/07 01:18:14 by juan-anm         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:33:18 by jbortolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define L_ARROW 123
 # define R_ARROW 124
 # define ESC 53
-# define GRID_SIZE 8
+# define GRID_SIZE 16
 # define WIN_WIDTH 1300
 # define WIN_HEIGHT 1000
 
@@ -54,6 +54,17 @@ typedef enum s_direc
 	WEST,
 	EAST
 }	t_direc;
+
+typedef struct s_line
+{
+	int		dx;
+	int		dy;
+	int		steps;
+	float	x_increment;
+	float	y_increment;
+	float	x;
+	float	y;
+}	t_line;
 typedef struct s_img
 {
 	void	*img;
@@ -132,7 +143,6 @@ typedef struct s_sprites
 	t_xpm	*es_sprite;
 }	t_sprites;
 
-
 typedef struct s_program
 {
 	t_data		*data;
@@ -141,6 +151,7 @@ typedef struct s_program
 	t_img		*img;
 	t_sprites	*sprites;
 	t_rays		*rays;
+	t_line		*line;
 }	t_program;
 
 //inits.c//
@@ -210,7 +221,7 @@ void		loop_caster(t_program *game);
 void		lp_cast2(t_program *game, double hori_int, double vert_int);
 
 //draw_lines.c
-void		draw_line(t_img *img, t_program *game, t_vector start, \
+void		draw_line(t_img *img, t_line *line, t_vector start, \
 			t_vector end);
 //cast_walls.c
 void		render_wall(t_program *game, int ray);
